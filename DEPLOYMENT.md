@@ -79,8 +79,13 @@ All containers should be running:
 
 ### Access Website
 
+**Public Access (via Cloudflare Tunnel):**
 - Main site: `https://certifyd.app`
 - File browser: `https://files.certifyd.app` (if configured)
+
+**Local Network Access:**
+- Main site: `http://your-truenas-ip:8081`
+- File browser: `http://your-truenas-ip:8082` (optional)
 
 ## 4. Automatic Updates
 
