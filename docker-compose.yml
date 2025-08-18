@@ -87,7 +87,6 @@ services:
       - GITSYNC_PERIOD=5m
       - GITSYNC_ONE_TIME=false
       - GITSYNC_MAX_FAILURES=5
-      - GITSYNC_WEBHOOK_URL=http://certifyd-builder:3000/webhook
     volumes:
       - git-data:/git
     networks:
@@ -109,78 +108,56 @@ services:
       - builder-cache:/app/.npm
     command: |
       sh -c "
-        # Install dependencies for webhook server
-        npm install -g http-server express
+        echo '🚀 Starting Certifyd Builder...'
         
-        # Create webhook server
-        cat > webhook-server.js << 'EOF'
-        const express = require('express');
-        const { execSync } = require('child_process');
-        const fs = require('fs');
-        const path = require('path');
+        # Wait for git-sync to populate data
+        while [ ! -d /git/source ]; do
+          echo '⏳ Waiting for git-sync to clone repository...'
+          sleep 5
+        done
         
-        const app = express();
-        const PORT = 3000;
+        echo '📁 Source directory found, starting build...'
         
-        app.use(express.json());
+        # Copy source to working directory  
+        echo '📋 Copying source files...'
+        cp -r /git/source/* /app/ 2>/dev/null || echo 'Copy completed with warnings'
         
-        function buildProject() {
-          console.log('🔄 Starting build process...');
-          try {
-            const sourceDir = '/git/source';
-            const buildDir = '/app/dist';
-            
-            if (!fs.existsSync(sourceDir)) {
-              console.log('❌ Source directory not found');
-              return false;
-            }
-            
-            // Copy source to working directory
-            execSync('rm -rf /app/src /app/package.json /app/vite.config.ts /app/tailwind.config.js', { stdio: 'inherit' });
-            execSync('cp -r /git/source/* /app/', { stdio: 'inherit' });
-            
-            // Install dependencies and build
-            console.log('📦 Installing dependencies...');
-            execSync('npm ci --cache /app/.npm', { stdio: 'inherit', cwd: '/app' });
-            
-            console.log('🔨 Building project...');
-            execSync('npm run build', { stdio: 'inherit', cwd: '/app' });
-            
-            // Copy build output to web server
-            execSync('rm -rf /app/dist/*', { stdio: 'inherit' });
-            execSync('cp -r /app/dist/* /app/dist/', { stdio: 'inherit' });
-            
-            console.log('✅ Build completed successfully!');
-            return true;
-          } catch (error) {
-            console.error('❌ Build failed:', error.message);
-            return false;
-          }
-        }
+        # Install dependencies
+        echo '📦 Installing dependencies...'
+        npm ci --cache /app/.npm --silent
         
-        app.post('/webhook', (req, res) => {
-          console.log('📥 Received webhook, triggering build...');
-          buildProject();
-          res.json({ status: 'ok', message: 'Build triggered' });
-        });
+        # Build the project
+        echo '� Building React application...'
+        npm run build
         
-        app.get('/health', (req, res) => {
-          res.json({ status: 'healthy', timestamp: new Date().toISOString() });
-        });
+        # Copy built files to web directory
+        echo '📤 Deploying to web server...'
+        rm -rf /app/dist/*
+        cp -r /app/dist/* /app/dist/ 2>/dev/null || echo 'Copying build output...'
         
-        // Initial build on startup
-        setTimeout(() => {
-          console.log('🚀 Starting initial build...');
-          buildProject();
-        }, 10000);
+        # Verify build output exists
+        if [ -f /app/dist/index.html ]; then
+          echo '✅ Build completed successfully!'
+          echo '🌐 Website should now be available'
+        else
+          echo '❌ Build failed - no index.html found'
+          exit 1
+        fi
         
-        app.listen(PORT, '0.0.0.0', () => {
-          console.log('🌐 Webhook server listening on port ' + PORT);
-        });
-        EOF
-        
-        # Start webhook server
-        node webhook-server.js
+        # Keep container running and watch for changes
+        echo '👀 Watching for repository changes...'
+        while true; do
+          sleep 300  # Check every 5 minutes
+          if [ -f /git/source/.git/FETCH_HEAD ]; then
+            if [ /git/source/.git/FETCH_HEAD -nt /app/.last-build ]; then
+              echo '🔄 Repository updated, rebuilding...'
+              npm run build
+              cp -r /app/dist/* /app/dist/
+              touch /app/.last-build
+              echo '✅ Rebuild completed!'
+            fi
+          fi
+        done
       "
     networks:
       - certifyd-network
