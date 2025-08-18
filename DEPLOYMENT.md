@@ -85,7 +85,7 @@ All containers should be running:
 
 **Local Network Access:**
 - Main site: `http://your-truenas-ip:8081`
-- File browser: `http://your-truenas-ip:8082` (optional)
+- File browser: `http://your-truenas-ip:8083` (optional)
 
 ## 4. Automatic Updates
 
