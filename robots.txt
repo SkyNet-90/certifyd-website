@@ -1,0 +1,36 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://certifyd.app/sitemap.xml
+
+# Block AI scrapers and crawlers
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+# Block common bot patterns
+User-agent: *
+Disallow: /api/
+Disallow: /.git/
+Disallow: /node_modules/
+Disallow: /src/
+Disallow: /*.json$
+Disallow: /*.config.*
+
+# Allow important files
+Allow: /manifest.json
+Allow: /favicon.ico
+Allow: /robots.txt
+Allow: /sitemap.xml

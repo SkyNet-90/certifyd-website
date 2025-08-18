@@ -1,0 +1,181 @@
+version: "3.8"
+
+services:
+  # Nginx Web Server
+  certifyd-web:
+    image: nginx:alpine
+    container_name: certifyd-web
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    volumes:
+      - web-data:/usr/share/nginx/html
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - certifyd-git-sync
+    networks:
+      - certifyd-network
+    labels:
+      - "com.docker.compose.service=web"
+
+  # Git Sync & Build Container  
+  certifyd-git-sync:
+    image: registry.k8s.io/git-sync/git-sync:v4.2.1
+    container_name: certifyd-git-sync
+    restart: unless-stopped
+    environment:
+      - GITSYNC_REPO=${GIT_REPO:-https://github.com/SkyNet-90/Certifyd-Website.git}
+      - GITSYNC_BRANCH=${GIT_BRANCH:-main}
+      - GITSYNC_ROOT=/git
+      - GITSYNC_DEST=source
+      - GITSYNC_PERIOD=5m
+      - GITSYNC_ONE_TIME=false
+      - GITSYNC_MAX_FAILURES=5
+      - GITSYNC_WEBHOOK_URL=http://certifyd-builder:3000/webhook
+    volumes:
+      - git-data:/git
+    networks:
+      - certifyd-network
+    labels:
+      - "com.docker.compose.service=git-sync"
+
+  # Build Container
+  certifyd-builder:
+    image: node:18-alpine
+    container_name: certifyd-builder
+    restart: unless-stopped
+    working_dir: /app
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - git-data:/git:ro
+      - web-data:/app/dist
+      - builder-cache:/app/.npm
+    command: |
+      sh -c "
+        # Install dependencies for webhook server
+        npm install -g http-server express
+        
+        # Create webhook server
+        cat > webhook-server.js << 'EOF'
+        const express = require('express');
+        const { execSync } = require('child_process');
+        const fs = require('fs');
+        const path = require('path');
+        
+        const app = express();
+        const PORT = 3000;
+        
+        app.use(express.json());
+        
+        function buildProject() {
+          console.log('🔄 Starting build process...');
+          try {
+            const sourceDir = '/git/source';
+            const buildDir = '/app/dist';
+            
+            if (!fs.existsSync(sourceDir)) {
+              console.log('❌ Source directory not found');
+              return false;
+            }
+            
+            // Copy source to working directory
+            execSync('rm -rf /app/src /app/package.json /app/vite.config.ts /app/tailwind.config.js', { stdio: 'inherit' });
+            execSync('cp -r /git/source/* /app/', { stdio: 'inherit' });
+            
+            // Install dependencies and build
+            console.log('📦 Installing dependencies...');
+            execSync('npm ci --cache /app/.npm', { stdio: 'inherit', cwd: '/app' });
+            
+            console.log('🔨 Building project...');
+            execSync('npm run build', { stdio: 'inherit', cwd: '/app' });
+            
+            // Copy build output to web server
+            execSync('rm -rf /app/dist/*', { stdio: 'inherit' });
+            execSync('cp -r /app/dist/* /app/dist/', { stdio: 'inherit' });
+            
+            console.log('✅ Build completed successfully!');
+            return true;
+          } catch (error) {
+            console.error('❌ Build failed:', error.message);
+            return false;
+          }
+        }
+        
+        app.post('/webhook', (req, res) => {
+          console.log('📥 Received webhook, triggering build...');
+          buildProject();
+          res.json({ status: 'ok', message: 'Build triggered' });
+        });
+        
+        app.get('/health', (req, res) => {
+          res.json({ status: 'healthy', timestamp: new Date().toISOString() });
+        });
+        
+        // Initial build on startup
+        setTimeout(() => {
+          console.log('🚀 Starting initial build...');
+          buildProject();
+        }, 10000);
+        
+        app.listen(PORT, '0.0.0.0', () => {
+          console.log('🌐 Webhook server listening on port ' + PORT);
+        });
+        EOF
+        
+        # Start webhook server
+        node webhook-server.js
+      "
+    networks:
+      - certifyd-network
+    labels:
+      - "com.docker.compose.service=builder"
+
+  # File Browser
+  certifyd-filebrowser:
+    image: filebrowser/filebrowser:v2.27.0
+    container_name: certifyd-filebrowser
+    restart: unless-stopped
+    ports:
+      - "8081:80"
+    volumes:
+      - git-data:/srv/git:ro
+      - web-data:/srv/web:ro
+      - filebrowser-data:/database
+      - filebrowser-config:/config
+    environment:
+      - FB_DATABASE=/database/filebrowser.db
+      - FB_CONFIG=/config/.filebrowser.json
+    networks:
+      - certifyd-network
+    labels:
+      - "com.docker.compose.service=filebrowser"
+
+  # Cloudflare Tunnel
+  certifyd-tunnel:
+    image: cloudflare/cloudflared:latest
+    container_name: certifyd-tunnel
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run
+    environment:
+      - TUNNEL_TOKEN=${CF_TUNNEL_TOKEN}
+    networks:
+      - certifyd-network
+    labels:
+      - "com.docker.compose.service=tunnel"
+
+volumes:
+  git-data:
+    driver: local
+  web-data:
+    driver: local
+  builder-cache:
+    driver: local
+  filebrowser-data:
+    driver: local
+  filebrowser-config:
+    driver: local
+
+networks:
+  certifyd-network:
+    driver: bridge
