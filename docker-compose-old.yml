@@ -1,0 +1,307 @@
+version: "3.8"
+
+services:
+  # Nginx Web Server
+  certifyd-web:
+    image: nginx:alpine
+    container_name: certifyd-web
+    restart: unless-stopped
+    ports:
+      - "9001:80"
+    volumes:
+      - web-data:/usr/share/nginx/html
+    depends_on:
+      - certifyd-git-sync
+    networks:
+      - certifyd-network
+    labels:
+      - "com.docker.compose.service=web"
+    command: |
+      sh -c "
+      # Create a simple nginx config
+      cat > /etc/nginx/nginx.conf << 'EOF'
+      events {
+          worker_connections 1024;
+      }
+      
+      http {
+          include /etc/nginx/mime.types;
+          default_type application/octet-stream;
+          
+          sendfile on;
+          keepalive_timeout 65;
+          
+          gzip on;
+          gzip_types text/plain text/css application/json application/javascript text/xml application/xml text/javascript;
+          
+          server {
+              listen 80;
+              server_name localhost;
+              root /usr/share/nginx/html;
+              index index.html;
+              
+              location / {
+                  try_files \$uri \$uri/ /index.html;
+              }
+              
+              location /health {
+                  return 200 'healthy';
+                  add_header Content-Type text/plain;
+              }
+          }
+      }
+      EOF
+      
+      # Create a simple index.html if it doesn't exist
+      if [ ! -f /usr/share/nginx/html/index.html ]; then
+          cat > /usr/share/nginx/html/index.html << 'HTMLEOF'
+      <!DOCTYPE html>
+      <html>
+      <head>
+          <title>Certifyd Website Loading...</title>
+      </head>
+      <body>
+          <h1>Certifyd Website</h1>
+          <p>Website is loading... Please wait for the build process to complete.</p>
+          <p>If you see this message, nginx is working but the React app hasn't been built yet.</p>
+      </body>
+      </html>
+      HTMLEOF
+      fi
+      
+      # Start nginx
+      echo 'Starting nginx...'
+      nginx -g 'daemon off;'
+      "
+
+  # Git Sync & Build Container  
+  certifyd-git-sync:
+    image: registry.k8s.io/git-sync/git-sync:v4.2.1
+    container_name: certifyd-git-sync
+    restart: unless-stopped
+    environment:
+      - GITSYNC_REPO=${GIT_REPO:-https://github.com/SkyNet-90/Certifyd-Website.git}
+      - GITSYNC_BRANCH=${GIT_BRANCH:-main}
+      - GITSYNC_ROOT=/git
+      - GITSYNC_DEST=source
+      - GITSYNC_PERIOD=5m
+      - GITSYNC_ONE_TIME=false
+      - GITSYNC_MAX_FAILURES=5
+    volumes:
+      - git-data:/git
+    networks:
+      - certifyd-network
+    labels:
+      - "com.docker.compose.service=git-sync"
+
+  # Build Container
+  certifyd-builder:
+    image: node:18-alpine
+    container_name: certifyd-builder
+    restart: unless-stopped
+    working_dir: /app
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - git-data:/git:ro
+      - web-data:/usr/share/nginx/html
+      - builder-cache:/app/.npm
+    command: |
+      sh -c '
+        echo "🚀 Starting Certifyd Builder..."
+        echo "🔍 Debug info:"
+        echo "Current working directory:" && pwd
+        echo "Contents of /git:" && ls -la /git/ 2>/dev/null || echo "No /git directory"
+        
+        # Check what git-sync actually created
+        echo "🔍 Looking for actual source directory..."
+        if [ -L "/git/Certifyd-Website.git" ]; then
+          echo "Found symbolic link: /git/Certifyd-Website.git"
+          SOURCE_DIR="/git/Certifyd-Website.git"
+        elif [ -d "/git/source" ]; then
+          echo "Found source directory: /git/source"
+          SOURCE_DIR="/git/source"
+        else
+          echo "❌ Could not find source directory. Contents:"
+          ls -la /git/
+          exit 1
+        fi
+        
+        echo "📂 Using source directory: $SOURCE_DIR"
+        echo "Contents of source directory:"
+        ls -la "$SOURCE_DIR/" 2>/dev/null || echo "Cannot list source directory"
+        
+        # Wait for package.json to exist
+        WAIT_COUNT=0
+        while [ ! -f "$SOURCE_DIR/package.json" ]; do
+          WAIT_COUNT=$((WAIT_COUNT + 1))
+          
+          if [ $((WAIT_COUNT % 5)) -eq 1 ]; then
+            echo "⏳ Waiting for package.json... (attempt $WAIT_COUNT)"
+            echo "Contents of $SOURCE_DIR:"
+            ls -la "$SOURCE_DIR/" 2>/dev/null || echo "Directory not accessible yet"
+          fi
+          
+          if [ $WAIT_COUNT -gt 120 ]; then
+            echo "❌ Timeout after 10 minutes. Final debug:"
+            echo "Source dir ($SOURCE_DIR) contents:" && ls -la "$SOURCE_DIR/" 2>/dev/null || echo "No source directory"
+            exit 1
+          fi
+          
+          sleep 5
+        done
+        
+        echo "✅ Git-sync completed! Found package.json"
+        echo "📂 Source directory contents:"
+        ls -la "$SOURCE_DIR/"
+        
+        # Copy source files
+        echo "📋 Copying source files to working directory..."
+        cp -r "$SOURCE_DIR"/* /app/
+        
+        echo "📄 Verifying copy:"
+        ls -la /app/package.json
+        
+        # Install dependencies
+        echo "📦 Installing npm dependencies..."
+        npm ci --cache /app/.npm
+        
+        # Build the project
+        echo "🔨 Building React application..."
+        npm run build
+        
+        echo "📂 Build output contents:"
+        ls -la /app/dist/
+        
+        # Copy to nginx web directory
+        echo "📤 Copying to web server..."
+        cp -r /app/dist/* /usr/share/nginx/html/
+        
+        echo "🔍 Final nginx directory contents:"
+        ls -la /usr/share/nginx/html/
+        
+        if [ -f /usr/share/nginx/html/index.html ]; then
+          echo "🎉 SUCCESS! Website built and deployed!"
+          echo "🌐 Your website should be available at http://your-server:9001"
+        else
+          echo "❌ ERROR: Build completed but index.html not found in nginx directory"
+          exit 1
+        fi
+        
+        # Watch for updates
+        echo "👀 Now watching for repository changes..."
+        touch /app/.last-build
+        while true; do
+          sleep 300
+          if [ -f "$SOURCE_DIR/.git/FETCH_HEAD" ] && [ "$SOURCE_DIR/.git/FETCH_HEAD" -nt /app/.last-build ]; then
+            echo "🔄 Repository updated, rebuilding..."
+            npm run build
+            cp -r /app/dist/* /usr/share/nginx/html/
+            touch /app/.last-build
+            echo "✅ Auto-rebuild completed!"
+          fi
+        done
+      '
+        
+        # Wait for git-sync to populate data
+        while [ ! -d /git/source ]; do
+          echo '⏳ Waiting for git-sync to clone repository...'
+          sleep 5
+        done
+        
+        echo '📁 Source directory found, starting build...'
+        
+        # Copy source to working directory  
+        echo '📋 Copying source files...'
+        cp -r /git/source/* /app/ 2>/dev/null || echo 'Copy completed with warnings'
+        
+        # Install dependencies
+        echo '📦 Installing dependencies...'
+        npm ci --cache /app/.npm --silent
+        
+        # Build the project
+        echo '� Building React application...'
+        npm run build
+        
+        # Copy built files to web directory
+        echo '📤 Deploying to web server...'
+        rm -rf /app/dist/*
+        cp -r /app/dist/* /app/dist/ 2>/dev/null || echo 'Copying build output...'
+        
+        # Verify build output exists
+        if [ -f /app/dist/index.html ]; then
+          echo '✅ Build completed successfully!'
+          echo '🌐 Website should now be available'
+        else
+          echo '❌ Build failed - no index.html found'
+          exit 1
+        fi
+        
+        # Keep container running and watch for changes
+        echo '👀 Watching for repository changes...'
+        while true; do
+          sleep 300  # Check every 5 minutes
+          if [ -f /git/source/.git/FETCH_HEAD ]; then
+            if [ /git/source/.git/FETCH_HEAD -nt /app/.last-build ]; then
+              echo '🔄 Repository updated, rebuilding...'
+              npm run build
+              cp -r /app/dist/* /app/dist/
+              touch /app/.last-build
+              echo '✅ Rebuild completed!'
+            fi
+          fi
+        done
+      "
+    networks:
+      - certifyd-network
+    labels:
+      - "com.docker.compose.service=builder"
+
+  # File Browser
+  certifyd-filebrowser:
+    image: filebrowser/filebrowser:v2.27.0
+    container_name: certifyd-filebrowser
+    restart: unless-stopped
+    ports:
+      - "9002:80"
+    volumes:
+      - git-data:/srv/git:ro
+      - web-data:/srv/web:ro
+      - filebrowser-data:/database
+      - filebrowser-config:/config
+    environment:
+      - FB_DATABASE=/database/filebrowser.db
+      - FB_CONFIG=/config/.filebrowser.json
+    networks:
+      - certifyd-network
+    labels:
+      - "com.docker.compose.service=filebrowser"
+
+  # Cloudflare Tunnel
+  certifyd-tunnel:
+    image: cloudflare/cloudflared:latest
+    container_name: certifyd-tunnel
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run
+    environment:
+      - TUNNEL_TOKEN=${CF_TUNNEL_TOKEN}
+    networks:
+      - certifyd-network
+    labels:
+      - "com.docker.compose.service=tunnel"
+
+volumes:
+  git-data:
+    driver: local
+  web-data:
+    driver: local
+  builder-cache:
+    driver: local
+  filebrowser-data:
+    driver: local
+  filebrowser-config:
+    driver: local
+
+networks:
+  certifyd-network:
+    driver: bridge
