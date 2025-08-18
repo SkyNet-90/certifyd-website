@@ -103,15 +103,17 @@ services:
           
           cd /repo;
           BEFORE=$(git rev-parse HEAD 2>/dev/null || echo "unknown");
+          echo "📋 Current commit: $BEFORE";
           
           git reset --hard HEAD || echo "Reset failed";
           git clean -fd || echo "Clean failed";
           git pull origin main || (echo "Git pull failed, retrying in next cycle" && continue);
           
           AFTER=$(git rev-parse HEAD 2>/dev/null || echo "unknown");
+          echo "📋 After pull commit: $AFTER";
           
           if [ "$BEFORE" != "$AFTER" ]; then
-            echo "📦 Changes detected! New commit: $AFTER";
+            echo "📦 Changes detected! Old: $BEFORE -> New: $AFTER";
             echo "🔨 Rebuilding project...";
             
             npm ci --production=false || (echo "npm ci failed" && continue);
