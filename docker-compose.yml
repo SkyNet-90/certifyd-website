@@ -71,15 +71,15 @@ services:
           echo "📦 Git repository exists, resetting and pulling...";
           git reset --hard HEAD || echo "Reset failed";
           git clean -fd || echo "Clean failed";
-          git pull origin $GIT_BRANCH || echo "Pull failed, will retry";
+          git pull origin main || echo "Pull failed, will retry";
         else
           echo "📥 Cloning repository...";
-          git clone $GIT_REPO /tmp/repo-clone || exit 1;
+          git clone https://github.com/SkyNet-90/certifyd-website.git /tmp/repo-clone || exit 1;
           cp -r /tmp/repo-clone/* /repo/;
           cp -r /tmp/repo-clone/.git /repo/;
           rm -rf /tmp/repo-clone;
           cd /repo;
-          git checkout $GIT_BRANCH || echo "Branch checkout failed";
+          git checkout main || echo "Branch checkout failed";
         fi;
         
         if [ ! -f "package.json" ]; then
@@ -98,7 +98,7 @@ services:
         echo "✅ Initial deployment completed. Starting periodic sync...";
         
         while true; do
-          sleep $SYNC_INTERVAL;
+          sleep 300;
           echo "🔄 Checking for updates at $(date)";
           
           cd /repo;
@@ -106,7 +106,7 @@ services:
           
           git reset --hard HEAD || echo "Reset failed";
           git clean -fd || echo "Clean failed";
-          git pull origin $GIT_BRANCH || (echo "Git pull failed, retrying in next cycle" && continue);
+          git pull origin main || (echo "Git pull failed, retrying in next cycle" && continue);
           
           AFTER=$(git rev-parse HEAD 2>/dev/null || echo "unknown");
           
