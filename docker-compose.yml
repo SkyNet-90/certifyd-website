@@ -146,10 +146,10 @@ services:
           echo "⚠️  CF_TUNNEL_TOKEN not configured - Starting Quick Tunnel for testing";
           echo "🌐 Quick Tunnel connecting to certifyd-web:80...";
           echo "💡 For production: Set CF_TUNNEL_TOKEN environment variable with your Named Tunnel token";
-          cloudflared tunnel --no-autoupdate --url http://certifyd-web:80;
+          exec cloudflared tunnel --url http://certifyd-web:80;
         else
           echo "🌐 Starting Named Cloudflare tunnel with token...";
-          cloudflared tunnel --no-autoupdate run --token "$${CF_TUNNEL_TOKEN}";
+          exec cloudflared tunnel run --token "$${CF_TUNNEL_TOKEN}";
         fi
       '
     environment:
