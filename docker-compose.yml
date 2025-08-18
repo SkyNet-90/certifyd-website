@@ -104,8 +104,87 @@ services:
       - NODE_ENV=production
     volumes:
       - git-data:/git:ro
-      - web-data:/app/dist
+      - web-data:/usr/share/nginx/html
       - builder-cache:/app/.npm
+    command: |
+      sh -c "
+        echo '🚀 Starting Certifyd Builder...'
+        echo '🔍 Debug info:'
+        echo 'Current working directory:' && pwd
+        echo 'Contents of /git:' && ls -la /git/ 2>/dev/null || echo 'No /git directory'
+        
+        # Wait for git-sync with better debugging
+        WAIT_COUNT=0
+        while [ ! -f /git/source/package.json ]; do
+          WAIT_COUNT=\$((WAIT_COUNT + 1))
+          
+          if [ \$((WAIT_COUNT % 5)) -eq 1 ]; then
+            echo '⏳ Waiting for git-sync... (check \$WAIT_COUNT)'
+            echo 'Contents of /git:' && ls -la /git/ 2>/dev/null || echo 'No /git directory yet'
+            echo 'Looking for /git/source/package.json'
+          fi
+          
+          if [ \$WAIT_COUNT -gt 120 ]; then
+            echo '❌ Timeout after 10 minutes. Final debug:'
+            echo '/git contents:' && ls -la /git/ 2>/dev/null || echo 'No /git'
+            echo '/git/source contents:' && ls -la /git/source/ 2>/dev/null || echo 'No /git/source'
+            exit 1
+          fi
+          
+          sleep 5
+        done
+        
+        echo '✅ Git-sync completed! Found package.json'
+        echo '📂 Source directory contents:'
+        ls -la /git/source/
+        
+        # Copy source files
+        echo '📋 Copying source files to working directory...'
+        cp -r /git/source/* /app/
+        
+        echo '📄 Verifying copy:'
+        ls -la /app/package.json
+        
+        # Install dependencies
+        echo '📦 Installing npm dependencies...'
+        npm ci --cache /app/.npm
+        
+        # Build the project
+        echo '🔨 Building React application...'
+        npm run build
+        
+        echo '📂 Build output contents:'
+        ls -la /app/dist/
+        
+        # Copy to nginx web directory
+        echo '📤 Copying to web server...'
+        cp -r /app/dist/* /usr/share/nginx/html/
+        
+        echo '🔍 Final nginx directory contents:'
+        ls -la /usr/share/nginx/html/
+        
+        if [ -f /usr/share/nginx/html/index.html ]; then
+          echo '🎉 SUCCESS! Website built and deployed!'
+          echo '🌐 Your website should be available at http://your-server:9001'
+        else
+          echo '❌ ERROR: Build completed but index.html not found in nginx directory'
+          exit 1
+        fi
+        
+        # Watch for updates
+        echo '👀 Now watching for repository changes...'
+        touch /app/.last-build
+        while true; do
+          sleep 300
+          if [ -f /git/source/.git/FETCH_HEAD ] && [ /git/source/.git/FETCH_HEAD -nt /app/.last-build ]; then
+            echo '🔄 Repository updated, rebuilding...'
+            npm run build
+            cp -r /app/dist/* /usr/share/nginx/html/
+            touch /app/.last-build
+            echo '✅ Auto-rebuild completed!'
+          fi
+        done
+      "
     command: |
       sh -c "
         echo '🚀 Starting Certifyd Builder...'
