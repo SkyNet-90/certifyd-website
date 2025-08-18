@@ -185,9 +185,6 @@ services:
           fi
         done
       "
-    command: |
-      sh -c "
-        echo '🚀 Starting Certifyd Builder...'
         
         # Wait for git-sync to populate data
         while [ ! -d /git/source ]; do
