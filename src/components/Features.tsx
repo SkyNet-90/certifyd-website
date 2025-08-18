@@ -5,9 +5,7 @@ import {
   Shield, 
   Bell, 
   FileText, 
-  Smartphone, 
   Lock, 
-  Calendar, 
   Award, 
   Database 
 } from 'lucide-react';
@@ -79,19 +77,9 @@ const Features: React.FC = () => {
       description: "Attach and store certification documents with AES-256 encryption and secure file management."
     },
     {
-      icon: <Calendar className="w-8 h-8 text-white" />,
-      title: "Calendar Integration",
-      description: "Sync renewal dates with your device calendar and get system-level notifications for upcoming exams."
-    },
-    {
       icon: <Lock className="w-8 h-8 text-white" />,
       title: "Privacy First",
       description: "No external data transmission. All your certification data stays on your device with local-only storage."
-    },
-    {
-      icon: <Smartphone className="w-8 h-8 text-white" />,
-      title: "Cross-Platform Sync",
-      description: "Available on iOS and Android with consistent experience across all your devices."
     }
   ];
 
@@ -115,7 +103,7 @@ const Features: React.FC = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {features.map((feature, index) => (
             <FeatureCard
               key={index}
