@@ -140,9 +140,19 @@ services:
     image: cloudflare/cloudflared:latest
     container_name: cloudflared-certifyd
     restart: unless-stopped
-    command: tunnel --no-autoupdate run --token ${CF_TUNNEL_TOKEN}
+    command: >
+      sh -c '
+        if [ -z "$${CF_TUNNEL_TOKEN}" ]; then
+          echo "⚠️  CF_TUNNEL_TOKEN not set - Cloudflare tunnel disabled";
+          echo "💡 To enable: Set CF_TUNNEL_TOKEN environment variable in Portainer";
+          sleep infinity;
+        else
+          echo "🌐 Starting Cloudflare tunnel...";
+          cloudflared tunnel --no-autoupdate run --token $${CF_TUNNEL_TOKEN};
+        fi
+      '
     environment:
-      - TUNNEL_TOKEN=${CF_TUNNEL_TOKEN}
+      - CF_TUNNEL_TOKEN=${CF_TUNNEL_TOKEN:-}
     depends_on:
       - certifyd-web
     networks:
