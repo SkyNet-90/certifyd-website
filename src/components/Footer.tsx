@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { Shield, Mail, Github, Linkedin, Twitter } from 'lucide-react';
 
 const Footer: React.FC = () => {
@@ -121,14 +122,14 @@ const Footer: React.FC = () => {
             <h3 className="text-white font-semibold mb-4">Legal</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#privacy" className="text-secondary-400 hover:text-primary-400 transition-colors duration-200">
+                <Link to="/privacy" className="text-secondary-400 hover:text-primary-400 transition-colors duration-200">
                   Privacy Policy
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#terms" className="text-secondary-400 hover:text-primary-400 transition-colors duration-200">
+                <Link to="/terms" className="text-secondary-400 hover:text-primary-400 transition-colors duration-200">
                   Terms of Service
-                </a>
+                </Link>
               </li>
               <li>
                 <a href="#deletion" className="text-secondary-400 hover:text-primary-400 transition-colors duration-200">

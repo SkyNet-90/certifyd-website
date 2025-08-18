@@ -1,33 +1,26 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
-import Hero from './components/Hero';
-import Features from './components/Features';
-import Screenshots from './components/Screenshots';
-import HowItWorks from './components/HowItWorks';
-import Testimonials from './components/Testimonials';
-import Pricing from './components/Pricing';
-import Download from './components/Download';
-import About from './components/About';
-import Support from './components/Support';
 import Footer from './components/Footer';
+import Home from './components/Home';
+import TermsOfService from './components/TermsOfService';
+import PrivacyPolicy from './components/PrivacyPolicy';
 
 const App: React.FC = () => {
   return (
-    <div className="min-h-screen bg-secondary-50">
-      <Header />
-      <main>
-        <Hero />
-        <Features />
-        <Screenshots />
-        <HowItWorks />
-        <Testimonials />
-        <Pricing />
-        <Download />
-        <About />
-        <Support />
-      </main>
-      <Footer />
-    </div>
+    <Router>
+      <div className="min-h-screen bg-secondary-50">
+        <Header />
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/terms" element={<TermsOfService />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </Router>
   );
 };
 

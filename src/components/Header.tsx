@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { Menu, X, Shield } from 'lucide-react';
 
 const Header: React.FC = () => {
@@ -45,16 +46,17 @@ const Header: React.FC = () => {
       <nav className="container-custom">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="flex items-center space-x-2 cursor-pointer"
-            onClick={() => scrollToSection('#hero')}
-          >
-            <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-700 rounded-lg flex items-center justify-center shadow-glow">
-              <Shield className="w-6 h-6 text-white" />
-            </div>
-            <span className="text-xl font-bold gradient-text">Certifyd</span>
-          </motion.div>
+          <Link to="/">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="flex items-center space-x-2 cursor-pointer"
+            >
+              <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-700 rounded-lg flex items-center justify-center shadow-glow">
+                <Shield className="w-6 h-6 text-white" />
+              </div>
+              <span className="text-xl font-bold gradient-text">Certifyd</span>
+            </motion.div>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
