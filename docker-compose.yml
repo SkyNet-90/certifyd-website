@@ -142,13 +142,14 @@ services:
     restart: unless-stopped
     command: >
       sh -c '
-        if [ -z "$${CF_TUNNEL_TOKEN}" ]; then
-          echo "⚠️  CF_TUNNEL_TOKEN not set - Cloudflare tunnel disabled";
-          echo "💡 To enable: Set CF_TUNNEL_TOKEN environment variable in Portainer";
-          sleep infinity;
+        if [ -z "$${CF_TUNNEL_TOKEN}" ] || [ "$${CF_TUNNEL_TOKEN}" = "" ]; then
+          echo "⚠️  CF_TUNNEL_TOKEN not configured - Starting Quick Tunnel for testing";
+          echo "🌐 Quick Tunnel connecting to certifyd-web:80...";
+          echo "💡 For production: Set CF_TUNNEL_TOKEN environment variable with your Named Tunnel token";
+          cloudflared tunnel --no-autoupdate --url http://certifyd-web:80;
         else
-          echo "🌐 Starting Cloudflare tunnel...";
-          cloudflared tunnel --no-autoupdate run --token $${CF_TUNNEL_TOKEN};
+          echo "🌐 Starting Named Cloudflare tunnel with token...";
+          cloudflared tunnel --no-autoupdate run --token "$${CF_TUNNEL_TOKEN}";
         fi
       '
     environment:
