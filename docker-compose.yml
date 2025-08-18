@@ -140,20 +140,9 @@ services:
     image: cloudflare/cloudflared:latest
     container_name: cloudflared-certifyd
     restart: unless-stopped
-    command: >
-      sh -c '
-        if [ -z "$${CF_TUNNEL_TOKEN}" ] || [ "$${CF_TUNNEL_TOKEN}" = "" ]; then
-          echo "⚠️  CF_TUNNEL_TOKEN not configured - Starting Quick Tunnel for testing";
-          echo "🌐 Quick Tunnel connecting to certifyd-web:80...";
-          echo "💡 For production: Set CF_TUNNEL_TOKEN environment variable with your Named Tunnel token";
-          exec cloudflared tunnel --url http://certifyd-web:80;
-        else
-          echo "🌐 Starting Named Cloudflare tunnel with token...";
-          exec cloudflared tunnel run --token "$${CF_TUNNEL_TOKEN}";
-        fi
-      '
+    command: tunnel --no-autoupdate run --token ${CF_TUNNEL_TOKEN}
     environment:
-      - CF_TUNNEL_TOKEN=${CF_TUNNEL_TOKEN:-}
+      - TUNNEL_TOKEN=${CF_TUNNEL_TOKEN}
     depends_on:
       - certifyd-web
     networks:
