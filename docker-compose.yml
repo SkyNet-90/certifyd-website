@@ -10,13 +10,111 @@ services:
       - "9001:80"
     volumes:
       - web-data:/usr/share/nginx/html
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
     depends_on:
       - certifyd-git-sync
     networks:
       - certifyd-network
     labels:
       - "com.docker.compose.service=web"
+    command: |
+      sh -c "
+      cat > /etc/nginx/nginx.conf << 'EOF'
+      events {
+          worker_connections 1024;
+      }
+
+      http {
+          include       /etc/nginx/mime.types;
+          default_type  application/octet-stream;
+
+          # Logging
+          log_format main '\$remote_addr - \$remote_user [\$time_local] \"\$request\" '
+                         '\$status \$body_bytes_sent \"\$http_referer\" '
+                         '\"\$http_user_agent\" \"\$http_x_forwarded_for\"';
+
+          access_log /var/log/nginx/access.log main;
+          error_log /var/log/nginx/error.log warn;
+
+          # Basic settings
+          sendfile on;
+          tcp_nopush on;
+          tcp_nodelay on;
+          keepalive_timeout 65;
+          types_hash_max_size 2048;
+          server_tokens off;
+
+          # Gzip compression
+          gzip on;
+          gzip_vary on;
+          gzip_min_length 1024;
+          gzip_comp_level 6;
+          gzip_types
+              application/javascript
+              application/json
+              application/xml
+              application/rss+xml
+              application/atom+xml
+              application/manifest+json
+              image/svg+xml
+              text/plain
+              text/css
+              text/xml
+              text/javascript
+              text/x-component;
+
+          # Security headers
+          add_header X-Frame-Options \"SAMEORIGIN\" always;
+          add_header X-Content-Type-Options \"nosniff\" always;
+          add_header X-XSS-Protection \"1; mode=block\" always;
+          add_header Referrer-Policy \"no-referrer-when-downgrade\" always;
+
+          server {
+              listen 80;
+              server_name localhost;
+              root /usr/share/nginx/html;
+              index index.html;
+
+              # Enable compression for this server
+              location ~* \\\.(js|css|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot)\\\$ {
+                  expires 1y;
+                  add_header Cache-Control \"public, immutable\";
+                  add_header Vary Accept-Encoding;
+              }
+
+              # Handle SPA routing
+              location / {
+                  try_files \$uri \$uri/ /index.html;
+              }
+
+              # Health check endpoint
+              location /health {
+                  access_log off;
+                  return 200 \"healthy\\n\";
+                  add_header Content-Type text/plain;
+              }
+
+              # Security.txt
+              location /.well-known/security.txt {
+                  return 301 /security.txt;
+              }
+
+              # Block access to sensitive files
+              location ~ /\\\. {
+                  deny all;
+                  access_log off;
+                  log_not_found off;
+              }
+
+              location ~ ~\\\$ {
+                  deny all;
+                  access_log off;
+                  log_not_found off;
+              }
+          }
+      }
+      EOF
+      nginx -g 'daemon off;'
+      "
 
   # Git Sync & Build Container  
   certifyd-git-sync:
