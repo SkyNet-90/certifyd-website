@@ -52,34 +52,34 @@ const Features: React.FC = () => {
 
   const features = [
     {
-      icon: <Shield className="w-8 h-8 text-white" />,
-      title: "Biometric Security",
-      description: "TouchID, FaceID, and fingerprint authentication with secure local storage using iOS Keychain and Android Keystore."
+      icon: <Award className="w-8 h-8 text-white" />,
+      title: "Smart Dashboard",
+      description: "Visual status overview of all certifications with expiring, active, and expired tracking in an intuitive interface."
     },
     {
       icon: <Bell className="w-8 h-8 text-white" />,
-      title: "Smart Reminders",
-      description: "Custom notification schedules with snooze functionality and priority levels to never miss certification renewals."
-    },
-    {
-      icon: <Award className="w-8 h-8 text-white" />,
-      title: "Multi-Provider Support",
-      description: "Track certifications from AWS, Microsoft, Cisco, CompTIA, and many more providers in one secure location."
-    },
-    {
-      icon: <FileText className="w-8 h-8 text-white" />,
-      title: "Professional PDF Export",
-      description: "Generate polished certification portfolios and professional summaries perfect for job applications."
+      title: "Expiration Alerts",
+      description: "Intelligent notifications 60 days before expiration with customizable reminder schedules to never miss renewals."
     },
     {
       icon: <Database className="w-8 h-8 text-white" />,
-      title: "Secure Document Storage",
-      description: "Attach and store certification documents with AES-256 encryption and secure file management."
+      title: "Multiple Provider Support",
+      description: "Track certifications from AWS, Microsoft, Google Cloud, Cisco, CompTIA, and 20+ other providers in one place."
+    },
+    {
+      icon: <FileText className="w-8 h-8 text-white" />,
+      title: "Portfolio Generator",
+      description: "Create professional certification portfolios and summaries perfect for job applications and client presentations."
+    },
+    {
+      icon: <Database className="w-8 h-8 text-white" />,
+      title: "Import/Export Data",
+      description: "Tech-friendly JSON format for data portability, scripting, and automation. Full control over your certification data."
     },
     {
       icon: <Lock className="w-8 h-8 text-white" />,
-      title: "Privacy First",
-      description: "No external data transmission. All your certification data stays on your device with local-only storage."
+      title: "Offline-First Privacy",
+      description: "No account required. All certification data stored locally on your device with no cloud dependency or data transmission."
     }
   ];
 
@@ -94,12 +94,12 @@ const Features: React.FC = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-secondary-900 mb-6">
-            Enterprise-Grade Features for{' '}
+            Built for{' '}
             <span className="gradient-text">IT Professionals</span>
           </h2>
           <p className="text-lg md:text-xl text-secondary-600 max-w-3xl mx-auto leading-relaxed">
-            Built with security and usability in mind, Certifyd provides all the tools you need 
-            to manage your IT certifications professionally and securely.
+            Certifyd provides a simple, secure way to track your certifications without the complexity 
+            of accounts, cloud sync, or data sharing. Your data stays on your device, always.
           </p>
         </motion.div>
 
@@ -115,7 +115,7 @@ const Features: React.FC = () => {
           ))}
         </div>
 
-        {/* Security Highlight */}
+        {/* Privacy Highlight */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -127,20 +127,20 @@ const Features: React.FC = () => {
               <Shield className="w-10 h-10 text-white" />
             </div>
             <h3 className="text-2xl md:text-3xl font-bold text-secondary-900 mb-4">
-              Security You Can Trust
+              Privacy You Can Trust
             </h3>
             <p className="text-lg text-secondary-700 max-w-2xl mx-auto mb-6">
-              Your certification data is protected with the same security standards used by 
-              financial institutions. Everything is encrypted and stored locally on your device.
+              No accounts, no cloud storage, no data collection. Certifyd works entirely offline 
+              with all your certification data stored securely on your device.
             </p>
             <div className="flex flex-wrap justify-center gap-6 text-sm text-secondary-600">
               <div className="flex items-center">
                 <div className="w-2 h-2 bg-primary-600 rounded-full mr-2" />
-                AES-256 Encryption
+                No Account Required
               </div>
               <div className="flex items-center">
                 <div className="w-2 h-2 bg-primary-600 rounded-full mr-2" />
-                Zero Analytics Tracking
+                Offline-First Design
               </div>
               <div className="flex items-center">
                 <div className="w-2 h-2 bg-primary-600 rounded-full mr-2" />
@@ -148,7 +148,7 @@ const Features: React.FC = () => {
               </div>
               <div className="flex items-center">
                 <div className="w-2 h-2 bg-primary-600 rounded-full mr-2" />
-                Biometric Protection
+                Zero Data Collection
               </div>
             </div>
           </div>

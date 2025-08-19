@@ -36,7 +36,7 @@ const Hero: React.FC = () => {
             className="inline-flex items-center px-4 py-2 bg-primary-100 text-primary-700 rounded-full text-sm font-medium mb-6 backdrop-blur-sm"
           >
             <Star className="w-4 h-4 mr-2 text-primary-600" />
-            Secure IT Certification Management
+            Offline-First Certification Tracker
           </motion.div>
 
           {/* Main Headline */}
@@ -46,11 +46,11 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-secondary-900 mb-6 leading-tight"
           >
-            Stay on top of your{' '}
+            Keep Your{' '}
             <span className="gradient-text">
-              IT certifications
+              IT Certifications
             </span>{' '}
-            with ease
+            Organized
           </motion.h1>
 
           {/* Subtitle */}
@@ -60,8 +60,8 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-lg md:text-xl lg:text-2xl text-secondary-600 mb-8 max-w-3xl mx-auto leading-relaxed"
           >
-            Track, manage, and never miss a renewal again. Built with enterprise-grade security, 
-            biometric authentication, and smart reminders designed for IT professionals.
+            Never miss another expiration date with Certifyd - the secure, offline-first certification tracker 
+            for IT professionals. No account required, your data stays on your device.
           </motion.p>
 
           {/* Stats */}
@@ -73,15 +73,15 @@ const Hero: React.FC = () => {
           >
             <div className="flex items-center">
               <Shield className="w-5 h-5 mr-2 text-primary-600" />
-              <span className="font-medium">Biometric Security</span>
+              <span className="font-medium">Privacy-First</span>
             </div>
             <div className="flex items-center">
               <Smartphone className="w-5 h-5 mr-2 text-primary-600" />
-              <span className="font-medium">iOS & Android</span>
+              <span className="font-medium">iOS Available</span>
             </div>
             <div className="flex items-center">
               <Star className="w-5 h-5 mr-2 text-primary-600" />
-              <span className="font-medium">100% Free</span>
+              <span className="font-medium">No Account Required</span>
             </div>
           </motion.div>
 
@@ -96,13 +96,13 @@ const Hero: React.FC = () => {
               onClick={scrollToDownload}
               className="btn-primary text-lg px-8 py-4 w-full sm:w-auto"
             >
-              Download Now
+              Download for iOS
             </button>
             <button
               onClick={scrollToFeatures}
               className="btn-secondary text-lg px-8 py-4 w-full sm:w-auto"
             >
-              Learn More
+              See Features
             </button>
           </motion.div>
 

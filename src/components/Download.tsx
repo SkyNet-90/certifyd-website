@@ -26,11 +26,11 @@ const Download: React.FC = () => {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-            Download Certifyd Today
+            Download for iOS
           </h2>
           <p className="text-lg md:text-xl text-primary-100 max-w-3xl mx-auto leading-relaxed">
-            Get started with secure certification management in under 5 minutes. 
-            Available for iOS 13.0+ and Android API 21+.
+            Get started with offline certification tracking in seconds. 
+            Available for iOS 13.0+ with no account required.
           </p>
         </motion.div>
 
