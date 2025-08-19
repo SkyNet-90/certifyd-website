@@ -110,7 +110,7 @@ const Testimonials: React.FC = () => {
           ))}
         </div>
 
-        {/* Stats */}
+        {/* Development Status */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -118,20 +118,20 @@ const Testimonials: React.FC = () => {
           className="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-8 text-center"
         >
           <div>
-            <div className="text-3xl lg:text-4xl font-bold gradient-text mb-2">5.0</div>
-            <div className="text-secondary-600">App Store Rating</div>
+            <div className="text-3xl lg:text-4xl font-bold gradient-text mb-2">Beta</div>
+            <div className="text-secondary-600">Development Stage</div>
           </div>
           <div>
-            <div className="text-3xl lg:text-4xl font-bold gradient-text mb-2">10K+</div>
-            <div className="text-secondary-600">Downloads</div>
+            <div className="text-3xl lg:text-4xl font-bold gradient-text mb-2">iOS</div>
+            <div className="text-secondary-600">First Platform</div>
           </div>
           <div>
             <div className="text-3xl lg:text-4xl font-bold gradient-text mb-2">50+</div>
             <div className="text-secondary-600">Supported Providers</div>
           </div>
           <div>
-            <div className="text-3xl lg:text-4xl font-bold gradient-text mb-2">99.9%</div>
-            <div className="text-secondary-600">Uptime</div>
+            <div className="text-3xl lg:text-4xl font-bold gradient-text mb-2">100%</div>
+            <div className="text-secondary-600">Offline Capable</div>
           </div>
         </motion.div>
 
