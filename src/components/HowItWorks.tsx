@@ -13,7 +13,7 @@ const HowItWorks: React.FC = () => {
     {
       number: "01",
       title: "Download the App",
-      description: "Get Certifyd from the App Store or Google Play. Available for iOS 13.0+ and Android API 21+.",
+  description: "Get CertifydPro from the App Store or Google Play. Available for iOS 13.0+ and Android API 21+.",
       icon: <Download className="w-8 h-8 text-white" />
     },
     {
@@ -51,7 +51,7 @@ const HowItWorks: React.FC = () => {
             Get Started in <span className="gradient-text">3 Simple Steps</span>
           </h2>
           <p className="text-lg md:text-xl text-secondary-600 max-w-3xl mx-auto leading-relaxed">
-            Setting up Certifyd takes less than 5 minutes. Here's how to get your certification 
+            Setting up CertifydPro takes less than 5 minutes. Here's how to get your certification 
             management system up and running.
           </p>
         </motion.div>
@@ -116,7 +116,7 @@ const HowItWorks: React.FC = () => {
             onClick={scrollToDownload}
             className="btn-primary text-lg px-8 py-4"
           >
-            Download Certifyd Now
+            Download CertifydPro Now
           </button>
         </motion.div>
       </div>

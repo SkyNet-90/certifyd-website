@@ -29,7 +29,7 @@ const Footer: React.FC = () => {
               <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-700 rounded-lg flex items-center justify-center">
                 <Shield className="w-6 h-6 text-white" />
               </div>
-              <span className="text-xl font-bold text-white">Certifyd</span>
+              <span className="text-xl font-bold text-white">CertifydPro</span>
             </motion.div>
             <p className="text-secondary-400 leading-relaxed mb-6">
               Secure IT certification management for professionals. 
@@ -133,7 +133,7 @@ const Footer: React.FC = () => {
               </li>
               <li>
                 <a href="#deletion" className="text-secondary-400 hover:text-primary-400 transition-colors duration-200">
-                  Account Deletion
+                  Data Deletion
                 </a>
               </li>
               <li>
@@ -149,7 +149,7 @@ const Footer: React.FC = () => {
         <div className="border-t border-secondary-700 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-secondary-400 text-sm mb-4 md:mb-0">
-              © {currentYear} Certifyd. Built with ❤️ by{' '}
+              © {currentYear} CertifydPro. Built with ❤️ by{' '}
               <a 
                 href="https://skylarmatthews.me" 
                 className="text-primary-400 hover:text-primary-300 transition-colors duration-200"

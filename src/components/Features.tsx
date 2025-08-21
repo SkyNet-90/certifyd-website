@@ -79,7 +79,7 @@ const Features: React.FC = () => {
     {
       icon: <Lock className="w-8 h-8 text-white" />,
       title: "Offline-First Privacy",
-      description: "No account required. All certification data stored locally on your device with no cloud dependency or data transmission."
+  description: "All certification data stored locally on your device with no cloud dependency or data transmission."
     }
   ];
 
@@ -98,8 +98,8 @@ const Features: React.FC = () => {
             <span className="gradient-text">IT Professionals</span>
           </h2>
           <p className="text-lg md:text-xl text-secondary-600 max-w-3xl mx-auto leading-relaxed">
-            Certifyd provides a simple, secure way to track your certifications without the complexity 
-            of accounts, cloud sync, or data sharing. Your data stays on your device, always.
+            CertifydPro provides a simple, secure way to track your certifications without the complexity 
+            of cloud sync or data sharing. Your data stays on your device, always.
           </p>
         </motion.div>
 
@@ -130,13 +130,13 @@ const Features: React.FC = () => {
               Privacy You Can Trust
             </h3>
             <p className="text-lg text-secondary-700 max-w-2xl mx-auto mb-6">
-              No accounts, no cloud storage, no data collection. Certifyd works entirely offline 
+              No cloud storage, no data collection. CertifydPro works entirely offline 
               with all your certification data stored securely on your device.
             </p>
             <div className="flex flex-wrap justify-center gap-6 text-sm text-secondary-600">
               <div className="flex items-center">
                 <div className="w-2 h-2 bg-primary-600 rounded-full mr-2" />
-                No Account Required
+                No Sign Up Required
               </div>
               <div className="flex items-center">
                 <div className="w-2 h-2 bg-primary-600 rounded-full mr-2" />

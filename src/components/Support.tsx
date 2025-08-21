@@ -23,7 +23,7 @@ const Support: React.FC = () => {
             Support & <span className="gradient-text">Contact</span>
           </h2>
           <p className="text-lg md:text-xl text-secondary-600 max-w-3xl mx-auto leading-relaxed">
-            Have questions about Certifyd? Need help getting started? We're here to help you 
+            Have questions about CertifydPro? Need help getting started? We're here to help you 
             succeed with your certification management.
           </p>
         </motion.div>
@@ -63,7 +63,7 @@ const Support: React.FC = () => {
                 <div>
                   <h4 className="font-semibold text-secondary-900 mb-1">Feature Requests</h4>
                   <p className="text-secondary-600 mb-2">
-                    Suggest new features or improvements to make Certifyd better
+                    Suggest new features or improvements to make CertifydPro better
                   </p>
                   <a 
                     href="mailto:features@certifyd.app" 
@@ -196,9 +196,9 @@ const Support: React.FC = () => {
             
             <div className="card p-6 text-center">
               <HelpCircle className="w-12 h-12 text-primary-600 mx-auto mb-4" />
-              <h4 className="font-semibold text-secondary-900 mb-2">Account Deletion</h4>
+              <h4 className="font-semibold text-secondary-900 mb-2">Data Deletion</h4>
               <p className="text-secondary-600 text-sm mb-4">
-                Instructions for deleting your account and data
+                Instructions for deleting your data
               </p>
               <a href="#deletion" className="text-primary-600 hover:text-primary-700 font-medium">
                 Deletion Instructions

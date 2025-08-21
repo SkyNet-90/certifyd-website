@@ -18,31 +18,31 @@ const TermsOfService: React.FC = () => {
             <section>
               <h2 className="text-2xl font-semibold mb-4 text-white">1. Acceptance of Terms</h2>
               <p className="leading-relaxed">
-                By downloading, installing, or using the Certifyd mobile application ("App"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, please do not use our App.
+                By downloading, installing, or using the CertifydPro mobile application ("App"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, please do not use our App.
               </p>
             </section>
 
             <section>
               <h2 className="text-2xl font-semibold mb-4 text-white">2. Description of Service</h2>
               <p className="leading-relaxed">
-                Certifyd is a mobile application that helps users create, manage, and verify professional certifications and credentials. Our service includes digital certificate creation, verification tools, and secure storage of certification data.
+                CertifydPro is a mobile application that helps users create, manage, and verify professional certifications and credentials. Our service includes digital certificate creation, verification tools, and secure local storage of certification data. No account or registration is required.
               </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4 text-white">3. User Accounts and Registration</h2>
+              <h2 className="text-2xl font-semibold mb-4 text-white">3. App Access</h2>
               <div className="space-y-3">
                 <p className="leading-relaxed">
-                  • You must provide accurate and complete information when creating an account
+                  • No account or registration is required to use CertifydPro. All features are available without sign up.
                 </p>
                 <p className="leading-relaxed">
-                  • You are responsible for maintaining the security of your account credentials
+                  // removed account credential responsibility
                 </p>
                 <p className="leading-relaxed">
                   • You must be at least 16 years old to use this service
                 </p>
                 <p className="leading-relaxed">
-                  • One person may not maintain more than one active account
+                  // removed multiple account restriction
                 </p>
               </div>
             </section>
@@ -72,7 +72,7 @@ const TermsOfService: React.FC = () => {
             <section>
               <h2 className="text-2xl font-semibold mb-4 text-white">5. Intellectual Property</h2>
               <p className="leading-relaxed">
-                The Certifyd App, including its design, features, and underlying technology, is owned by Certifyd and protected by intellectual property laws. You retain ownership of your certification data while granting us a license to process and store it as necessary to provide our services.
+                The CertifydPro App, including its design, features, and underlying technology, is owned by CertifydPro and protected by intellectual property laws. You retain ownership of your certification data. All data is stored locally on your device and is not transmitted to external servers.
               </p>
             </section>
 
@@ -107,7 +107,7 @@ const TermsOfService: React.FC = () => {
             <section>
               <h2 className="text-2xl font-semibold mb-4 text-white">8. Termination</h2>
               <p className="leading-relaxed">
-                We may terminate or suspend your account at our discretion if you violate these Terms. Upon termination, your right to use the App ceases immediately. You may also delete your account at any time through the App settings.
+                We may terminate or suspend your access at our discretion if you violate these Terms. Upon termination, your right to use the App ceases immediately.
               </p>
             </section>
 

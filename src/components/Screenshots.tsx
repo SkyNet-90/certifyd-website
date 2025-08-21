@@ -19,7 +19,7 @@ const Screenshots: React.FC = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-secondary-900 mb-6">
-            See Certifyd in Action
+            See CertifydPro in Action
           </h2>
           <p className="text-lg md:text-xl text-secondary-600 max-w-3xl mx-auto leading-relaxed">
             Experience the clean, intuitive interface designed specifically for IT professionals.

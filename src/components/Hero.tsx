@@ -60,7 +60,7 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-lg md:text-xl lg:text-2xl text-secondary-600 mb-8 max-w-3xl mx-auto leading-relaxed"
           >
-            Never miss another expiration date with Certifyd - the secure, offline-first certification tracker 
+            Never miss another expiration date with CertifydPro - the secure, offline-first certification tracker 
             for IT professionals. No account required, your data stays on your device.
           </motion.p>
 

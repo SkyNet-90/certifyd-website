@@ -18,7 +18,7 @@ const PrivacyPolicy: React.FC = () => {
             <section>
               <h2 className="text-2xl font-semibold mb-4 text-white">1. Introduction</h2>
               <p className="leading-relaxed">
-                Certifyd ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our mobile application and related services.
+                CertifydPro ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our mobile application and related services. CertifydPro does not require any account or registration, and all certification data is stored locally on your device.
               </p>
             </section>
 
@@ -58,7 +58,7 @@ const PrivacyPolicy: React.FC = () => {
                   <strong>Service Provision:</strong> To create, manage, and verify your digital certifications
                 </p>
                 <p className="leading-relaxed">
-                  <strong>Account Management:</strong> To maintain your account and provide customer support
+                  // removed account management section
                 </p>
                 <p className="leading-relaxed">
                   <strong>Communication:</strong> To send important updates, security alerts, and promotional content
@@ -107,7 +107,7 @@ const PrivacyPolicy: React.FC = () => {
                   • <strong>Encryption:</strong> All data is encrypted in transit and at rest using industry-standard protocols
                 </p>
                 <p className="leading-relaxed">
-                  • <strong>Access Controls:</strong> Strict access controls and authentication requirements for our systems
+                  • <strong>Access Controls:</strong> Strict access controls for our systems
                 </p>
                 <p className="leading-relaxed">
                   • <strong>Regular Audits:</strong> Regular security assessments and vulnerability testing
@@ -148,7 +148,7 @@ const PrivacyPolicy: React.FC = () => {
             <section>
               <h2 className="text-2xl font-semibold mb-4 text-white">7. Data Retention</h2>
               <p className="leading-relaxed">
-                We retain your personal information only as long as necessary to provide our services and comply with legal obligations. Account information is typically retained for the duration of your account plus 3 years. Certification data may be retained longer for verification purposes. You can request earlier deletion through your account settings.
+                We retain your personal information only as long as necessary to provide our services and comply with legal obligations. Certification data may be retained for verification purposes. You can request earlier deletion by contacting support.
               </p>
             </section>
 
@@ -203,7 +203,7 @@ const PrivacyPolicy: React.FC = () => {
                   • Website: https://certifyd.app/privacy
                 </p>
                 <p className="leading-relaxed">
-                  • In-App: Privacy settings in your account preferences
+                  // removed in-app account privacy settings
                 </p>
               </div>
             </section>

@@ -93,7 +93,7 @@ const Testimonials: React.FC = () => {
             What <span className="gradient-text">IT Professionals</span> Are Saying
           </h2>
           <p className="text-lg md:text-xl text-secondary-600 max-w-3xl mx-auto leading-relaxed">
-            Join thousands of IT professionals who trust Certifyd to manage their certifications securely and efficiently.
+            Join thousands of IT professionals who trust CertifydPro to manage their certifications securely and efficiently.
           </p>
         </motion.div>
 
@@ -143,7 +143,7 @@ const Testimonials: React.FC = () => {
           className="text-center mt-12 p-6 bg-primary-50 rounded-xl border border-primary-200"
         >
           <p className="text-secondary-700">
-            <strong>Coming Soon:</strong> Certifyd is currently in beta development. 
+            <strong>Coming Soon:</strong> CertifydPro is currently in beta development. 
             Be the first to know when it launches!
           </p>
           <a 

@@ -30,7 +30,7 @@ const Pricing: React.FC = () => {
             Simple, <span className="gradient-text">Transparent Pricing</span>
           </h2>
           <p className="text-lg md:text-xl text-secondary-600 max-w-3xl mx-auto leading-relaxed">
-            Certifyd is completely free for individual IT professionals. No hidden costs, no subscriptions, no data mining.
+            CertifydPro is completely free for individual IT professionals. No hidden costs, no subscriptions, no data mining.
           </p>
         </motion.div>
 
@@ -51,7 +51,6 @@ const Pricing: React.FC = () => {
             <ul className="space-y-4 mb-8">
               {[
                 'Unlimited certifications',
-                'Biometric authentication',
                 'Smart notifications & reminders',
                 'Document attachments',
                 'PDF portfolio export',
@@ -144,7 +143,7 @@ const Pricing: React.FC = () => {
           <div className="max-w-3xl mx-auto space-y-6 text-left">
             <div className="card p-6">
               <h4 className="font-semibold text-secondary-900 mb-2">
-                Why is Certifyd free for individuals?
+                Why is CertifydPro free for individuals?
               </h4>
               <p className="text-secondary-600">
                 We believe every IT professional deserves access to secure certification management tools. 

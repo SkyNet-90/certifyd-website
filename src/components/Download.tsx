@@ -30,7 +30,7 @@ const Download: React.FC = () => {
           </h2>
           <p className="text-lg md:text-xl text-primary-100 max-w-3xl mx-auto leading-relaxed">
             Get started with offline certification tracking in seconds. 
-            Available for iOS 13.0+ with no account required.
+            Available for iOS 13.0+ with no sign up required.
           </p>
         </motion.div>
 
@@ -85,7 +85,7 @@ const Download: React.FC = () => {
           <DownloadIcon className="w-16 h-16 mx-auto mb-4 text-primary-200" />
           <h3 className="text-2xl font-bold mb-4">Coming Soon</h3>
           <p className="text-primary-100 mb-6 max-w-2xl mx-auto">
-            Certifyd is currently in development. Join our waitlist to be notified 
+            CertifydPro is currently in development. Join our waitlist to be notified 
             the moment it's available on the App Store and Google Play.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 items-center justify-center max-w-md mx-auto">

@@ -22,6 +22,7 @@ const Header: React.FC = () => {
     { label: 'Pricing', href: '#pricing' },
     { label: 'About', href: '#about' },
     { label: 'Support', href: '#support' },
+    { label: 'Help & Support', href: '/help', external: true },
   ];
 
   const scrollToSection = (href: string) => {
@@ -54,25 +55,41 @@ const Header: React.FC = () => {
               <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-700 rounded-lg flex items-center justify-center shadow-glow">
                 <Shield className="w-6 h-6 text-white" />
               </div>
-              <span className="text-xl font-bold gradient-text">Certifyd</span>
+              <span className="text-xl font-bold gradient-text">CertifydPro</span>
             </motion.div>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
             {navItems.map((item, index) => (
-              <motion.button
-                key={item.label}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 * index }}
-                whileHover={{ y: -2 }}
-                onClick={() => scrollToSection(item.href)}
-                className="text-secondary-700 hover:text-primary-600 font-medium transition-colors duration-200 relative group"
-              >
-                {item.label}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 transition-all duration-200 group-hover:w-full" />
-              </motion.button>
+              item.external ? (
+                <motion.a
+                  key={item.label}
+                  href={item.href}
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 * index }}
+                  whileHover={{ y: -2 }}
+                  className="text-secondary-700 hover:text-primary-600 font-medium transition-colors duration-200 relative group"
+                  style={{ cursor: 'pointer' }}
+                >
+                  {item.label}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 transition-all duration-200 group-hover:w-full" />
+                </motion.a>
+              ) : (
+                <motion.button
+                  key={item.label}
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 * index }}
+                  whileHover={{ y: -2 }}
+                  onClick={() => scrollToSection(item.href)}
+                  className="text-secondary-700 hover:text-primary-600 font-medium transition-colors duration-200 relative group"
+                >
+                  {item.label}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 transition-all duration-200 group-hover:w-full" />
+                </motion.button>
+              )
             ))}
           </div>
 

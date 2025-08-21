@@ -20,10 +20,10 @@ const About: React.FC = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-secondary-900 mb-6">
-            About <span className="gradient-text">Certifyd</span>
+            About <span className="gradient-text">CertifydPro</span>
           </h2>
           <p className="text-lg md:text-xl text-secondary-600 max-w-3xl mx-auto leading-relaxed">
-            Built by IT professionals, for IT professionals. Certifyd was created to solve the real-world 
+            Built by IT professionals, for IT professionals. CertifydPro was created to solve the real-world 
             challenges of managing multiple certifications securely and efficiently.
           </p>
         </motion.div>
@@ -35,7 +35,7 @@ const About: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <h3 className="text-2xl md:text-3xl font-bold text-secondary-900 mb-6">
-              The Story Behind Certifyd
+              The Story Behind CertifydPro
             </h3>
             <p className="text-secondary-600 mb-6 leading-relaxed">
               As an IT professional with over a decade of experience, I found myself juggling dozens 
@@ -43,12 +43,10 @@ const About: React.FC = () => {
               sticky notes were failing me—and I knew other professionals faced the same challenges.
             </p>
             <p className="text-secondary-600 mb-6 leading-relaxed">
-              After missing a critical certification renewal and nearly losing a job opportunity, 
-              I decided to build the solution I wished existed: a secure, private, and professional 
-              certification management system.
+              After almost missing a critical certification renewal, I decided to build the solution I wished existed: a secure, private, and professional certification management system.
             </p>
             <p className="text-secondary-600 leading-relaxed">
-              Certifyd is the result of that vision—built with the security standards you'd expect 
+              CertifydPro is the result of that vision—built with the security standards you'd expect 
               from enterprise software, but designed for individual professionals who value their privacy.
             </p>
           </motion.div>
@@ -62,7 +60,7 @@ const About: React.FC = () => {
             <div className="card p-6 text-center">
               <Shield className="w-12 h-12 text-primary-600 mx-auto mb-4" />
               <h4 className="font-bold text-secondary-900 mb-2">Security First</h4>
-              <p className="text-secondary-600 text-sm">Enterprise-grade encryption and biometric authentication</p>
+              <p className="text-secondary-600 text-sm">Enterprise-grade encryption</p>
             </div>
             <div className="card p-6 text-center">
               <User className="w-12 h-12 text-primary-600 mx-auto mb-4" />
@@ -99,7 +97,7 @@ const About: React.FC = () => {
             <p className="text-secondary-700 max-w-2xl mx-auto leading-relaxed">
               With 10+ years in IT infrastructure, cloud architecture, and cybersecurity, 
               I understand the challenges of maintaining professional certifications. 
-              Certifyd represents my commitment to the IT community—building tools that 
+              CertifydPro represents my commitment to the IT community—building tools that 
               respect your privacy while solving real problems.
             </p>
           </div>
