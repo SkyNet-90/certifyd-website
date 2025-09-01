@@ -198,10 +198,10 @@ const Support: React.FC = () => {
               <HelpCircle className="w-12 h-12 text-primary-600 mx-auto mb-4" />
               <h4 className="font-semibold text-secondary-900 mb-2">Data Deletion</h4>
               <p className="text-secondary-600 text-sm mb-4">
-                Instructions for deleting your data
+                To delete your data: go to Settings, tap on "Delete All Data" and follow on-screen instructions. Also delete the app from your device to ensure complete removal.
               </p>
-              <a href="#deletion" className="text-primary-600 hover:text-primary-700 font-medium">
-                Deletion Instructions
+              <a href="mailto:support@certifyd.app" className="text-primary-600 hover:text-primary-700 font-medium">
+                Need Help?
               </a>
             </div>
           </div>

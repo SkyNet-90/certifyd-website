@@ -19,13 +19,13 @@ const HowItWorks: React.FC = () => {
     {
       number: "02",
       title: "Set Up Your Profile",
-      description: "Create your secure profile with biometric authentication. Add your professional contact information.",
+      description: "Create your secure profile. Add your professional contact information.",
       icon: <Smartphone className="w-8 h-8 text-white" />
     },
     {
       number: "03",
       title: "Add Certifications",
-      description: "Import your existing certifications or add new ones. Upload documents and set renewal dates.",
+      description: "Add your existing certifications or create new ones. Set renewal dates and manage your certification portfolio.",
       icon: <Check className="w-8 h-8 text-white" />
     }
   ];

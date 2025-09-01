@@ -62,7 +62,7 @@ const Testimonials: React.FC = () => {
     {
       name: "Sarah Johnson",
       title: "Senior Cloud Architect",
-      content: "As someone with 12+ AWS certifications, this app is a lifesaver. The biometric security gives me peace of mind, and I never miss renewal dates anymore.",
+      content: "As someone with 12+ AWS certifications, this app is a lifesaver. I never miss renewal dates anymore.",
       rating: 5
     },
     {

@@ -1,13 +1,15 @@
-# Certifyd Website
+# CertifydPro Website
 
-> Official website for Certifyd - Secure IT Certification Management App
+> Official website for CertifydPro - Secure IT Certification Management App
 
-[![React](https://img.shields.io/badge/React-18.2+-blue.svg)](https://reactjs.org/)
+[![React](https:/2. **Configure public hostnames**:
+   - `certifydpro.app` → `http://container-name:80`
+   - `www.certifydpro.app` → `http://container-name:80`g.shields.io/badge/React-18.2+-blue.svg)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.2+-blue.svg)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.4+-blue.svg)](https://tailwindcss.com/)
 [![Vite](https://img.shields.io/badge/Vite-5.2+-purple.svg)](https://vitejs.dev/)
 
-A modern, responsive website for the Certifyd mobile app, built with React, TypeScript, and Tailwind CSS. Self-hosted on TrueNAS Scale with automated Git-sync deployment.
+A modern, responsive website for the CertifydPro mobile app, built with React, TypeScript, and Tailwind CSS. Self-hosted on TrueNAS Scale with automated Git-sync deployment.
 
 ## ✨ Features
 
@@ -80,7 +82,7 @@ A modern, responsive website for the Certifyd mobile app, built with React, Type
 
 1. **Create Portainer Stack**
    - Access Portainer interface
-   - Create new stack named `certifyd-website`
+   - - **Create new stack named `certifydpro-website`**
    - Use the docker-compose.yml configuration (see deployment docs)
 
 2. **Configure Environment Variables**
@@ -107,7 +109,7 @@ The application automatically deploys when changes are pushed to the main branch
 To force immediate deployment:
 ```bash
 # Restart the git-sync container in Portainer
-docker restart certifyd-git-sync
+docker restart certifydpro-git-sync
 ```
 
 ## 🔧 Configuration
@@ -149,16 +151,18 @@ docker restart certifyd-git-sync
 - **Fonts**: Update font imports in `index.html` and `tailwind.config.js`
 - **Animations**: Customize Framer Motion animations in component files
 
-## 📱 About Certifyd
+## 📱 About CertifydPro
 
-Certifyd is a secure IT certification management app for professionals. Key features include:
+CertifydPro is a secure IT certification management app for professionals. Key features include:
 
-- **Biometric Security**: TouchID, FaceID, and fingerprint authentication
-- **Smart Notifications**: Never miss a certification renewal
+- **Local Data Storage**: All data stored securely on your device with no cloud dependencies
+- **Smart Notifications**: Never miss a certification renewal with intelligent reminders
 - **Multi-Provider Support**: AWS, Microsoft, Cisco, CompTIA, and more
-- **Document Storage**: Secure file attachments with AES-256 encryption
+- **Document Storage**: Secure file attachments with local encryption
 - **PDF Export**: Professional certification portfolios
 - **Privacy First**: Local-only data storage, no external transmission
+- **Calendar Integration**: Seamless integration with your device calendar
+- **Multi-Platform**: Available on both iOS and Android devices
 
 ## 🚀 Performance
 
@@ -191,10 +195,10 @@ While this is the official website for a mobile app, suggestions and improvement
 
 ## 📞 Contact
 
-- **Website**: [www.certifyd.app](https://www.certifyd.app/)
+- **Website**: [www.certifydpro.app](https://www.certifydpro.app/)
 - **Developer**: [Skylar Matthews](https://skylarmatthews.me)  
 - **LinkedIn**: [linkedin.com/in/skylarmatthews](https://linkedin.com/in/skylarmatthews)
-- **Email**: [support@certifyd.app](mailto:support@certifyd.app)
+- **Email**: [support@certifydpro.app](mailto:support@certifydpro.app)
 
 ---
 

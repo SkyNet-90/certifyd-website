@@ -81,7 +81,7 @@ const Screenshots: React.FC = () => {
                 <p className="text-sm text-secondary-600 mt-2">
                   {index === 1 && 'Track all your certifications in one place'}
                   {index === 2 && 'Never miss a renewal deadline'}
-                  {index === 3 && 'Biometric security and privacy controls'}
+                  {index === 3 && 'Privacy controls and data export'}
                 </p>
               </div>
             </motion.div>

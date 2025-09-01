@@ -45,7 +45,7 @@ const HelpSupport: React.FC = () => (
           <li><strong>Do I need an account?</strong> No, CertifydPro works without any sign up or login.</li>
           <li><strong>Is my data secure?</strong> Yes, all data is stored locally and never shared externally.</li>
           <li><strong>Can I use CertifydPro on multiple devices?</strong> Data does not sync between devices. You can export/import your portfolio manually.</li>
-          <li><strong>How do I delete my data?</strong> Delete certifications in the app or remove the app from your device.</li>
+          <li><strong>How do I delete my data?</strong> Go to Settings, tap on "Delete All Data" and follow on-screen instructions. Also delete the app from your device to ensure complete removal.</li>
         </ul>
       </div>
     </div>

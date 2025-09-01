@@ -33,7 +33,7 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center px-4 py-2 bg-primary-100 text-primary-700 rounded-full text-sm font-medium mb-6 backdrop-blur-sm"
+            className="inline-flex items-center px-4 py-2 bg-primary-100 text-primary-700 rounded-full text-sm font-medium mb-6 backdrop-blur-sm relative z-10"
           >
             <Star className="w-4 h-4 mr-2 text-primary-600" />
             Offline-First Certification Tracker
@@ -96,7 +96,7 @@ const Hero: React.FC = () => {
               onClick={scrollToDownload}
               className="btn-primary text-lg px-8 py-4 w-full sm:w-auto"
             >
-              Download for iOS
+              Download App
             </button>
             <button
               onClick={scrollToFeatures}

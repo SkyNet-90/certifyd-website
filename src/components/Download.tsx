@@ -26,11 +26,11 @@ const Download: React.FC = () => {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-            Download for iOS
+            Download for iOS & Android
           </h2>
           <p className="text-lg md:text-xl text-primary-100 max-w-3xl mx-auto leading-relaxed">
             Get started with offline certification tracking in seconds. 
-            Available for iOS 13.0+ with no sign up required.
+            Available for iOS 13.0+ and Android 5.0+ with no sign up required.
           </p>
         </motion.div>
 

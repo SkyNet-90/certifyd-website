@@ -7,7 +7,8 @@ import {
   FileText, 
   Lock, 
   Award, 
-  Database 
+  Database,
+  Calendar
 } from 'lucide-react';
 
 interface FeatureCardProps {
@@ -77,9 +78,14 @@ const Features: React.FC = () => {
       description: "Tech-friendly JSON format for data portability, scripting, and automation. Full control over your certification data."
     },
     {
+      icon: <Calendar className="w-8 h-8 text-white" />,
+      title: "Calendar Integration", 
+      description: "Sync certification expiration dates with your device calendar and get native reminders across all your devices."
+    },
+    {
       icon: <Lock className="w-8 h-8 text-white" />,
       title: "Offline-First Privacy",
-  description: "All certification data stored locally on your device with no cloud dependency or data transmission."
+      description: "All certification data stored locally on your device with no cloud dependency or data transmission."
     }
   ];
 
