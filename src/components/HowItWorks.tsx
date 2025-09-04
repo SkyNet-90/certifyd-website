@@ -18,8 +18,8 @@ const HowItWorks: React.FC = () => {
     },
     {
       number: "02",
-      title: "Secure Authentication",
-      description: "Set up biometric authentication (FaceID/TouchID) with PIN backup for secure access to your certifications.",
+      title: "Secure Setup",
+      description: "Set up the app with secure local storage and device-level protection for your certification data.",
       icon: <Smartphone className="w-8 h-8 text-white" />
     },
     {

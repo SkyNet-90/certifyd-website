@@ -12,8 +12,8 @@ const Security: React.FC = () => {
   const securityFeatures = [
     {
       icon: Lock,
-      title: 'Biometric Authentication',
-      description: 'FaceID, TouchID, and device fingerprint authentication with secure PIN backup and multi-factor recovery options.',
+      title: 'Device Security',
+      description: 'Secure local storage with device-level protection and automatic data encryption without requiring user accounts.',
     },
     {
       icon: Eye,
@@ -57,7 +57,7 @@ const Security: React.FC = () => {
           </h2>
           <p className="text-lg md:text-xl text-secondary-600 max-w-3xl mx-auto leading-relaxed">
             Enterprise-grade security meets professional certification management. Your data is protected 
-            with biometric authentication, military-grade encryption, and secure storage.
+            with local device security, military-grade encryption, and secure storage.
           </p>
         </motion.div>
 

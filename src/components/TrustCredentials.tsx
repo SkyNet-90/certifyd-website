@@ -25,7 +25,7 @@ const TrustCredentials: React.FC = () => {
     {
       icon: <Shield className="w-8 h-8 text-white" />,
       title: "Enterprise Security",
-      description: "Built with enterprise-grade security standards including biometric auth and AES-256 encryption",
+      description: "Built with enterprise-grade security standards including device security and AES-256 encryption",
       color: "from-red-500 to-red-700"
     },
     {
@@ -132,7 +132,7 @@ const TrustCredentials: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
             <div className="bg-white p-4 rounded-lg shadow-sm">
               <div className="text-2xl mb-2">�</div>
-              <h4 className="font-semibold text-secondary-900 text-sm">Biometric Auth</h4>
+              <h4 className="font-semibold text-secondary-900 text-sm">Device Security</h4>
             </div>
             <div className="bg-white p-4 rounded-lg shadow-sm">
               <div className="text-2xl mb-2">�</div>

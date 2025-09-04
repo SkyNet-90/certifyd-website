@@ -57,7 +57,7 @@ const Pricing: React.FC = () => {
                   'Up to 3 certifications',
                   'Basic 30-day notifications',
                   'PDF export (with watermark)',
-                  'Biometric authentication',
+                  'Device security',
                   'AES-256 encryption',
                   'Core security features',
                   'Basic data management'

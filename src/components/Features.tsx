@@ -9,8 +9,7 @@ import {
   Award, 
   Database,
   Calendar,
-  BarChart3,
-  Fingerprint
+  BarChart3
 } from 'lucide-react';
 
 interface FeatureCardProps {
@@ -55,9 +54,9 @@ const Features: React.FC = () => {
 
   const features = [
     {
-      icon: <Fingerprint className="w-8 h-8 text-white" />,
-      title: "Biometric Security",
-      description: "FaceID, TouchID, and fingerprint authentication with PIN backup and secure account recovery options."
+      icon: <Shield className="w-8 h-8 text-white" />,
+      title: "Secure Storage",
+      description: "AES-256 encryption with secure local storage and automatic data protection without requiring accounts."
     },
     {
       icon: <Bell className="w-8 h-8 text-white" />,

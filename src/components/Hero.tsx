@@ -61,7 +61,7 @@ const Hero: React.FC = () => {
             className="text-lg md:text-xl lg:text-2xl text-secondary-700 mb-8 max-w-3xl mx-auto leading-relaxed font-medium"
           >
             Enterprise-grade security meets professional certification management. 
-            Biometric authentication, encrypted storage, and smart renewal tracking.
+            Secure local storage, encrypted data, and smart renewal tracking.
           </motion.p>
 
           {/* Stats */}
@@ -73,7 +73,7 @@ const Hero: React.FC = () => {
           >
             <div className="flex items-center bg-white/80 px-4 py-2 rounded-full shadow-sm">
               <Shield className="w-5 h-5 mr-2 text-primary-600" />
-              <span className="font-semibold">Biometric Security</span>
+              <span className="font-semibold">Secure Storage</span>
             </div>
             <div className="flex items-center bg-white/80 px-4 py-2 rounded-full shadow-sm">
               <Smartphone className="w-5 h-5 mr-2 text-primary-600" />
