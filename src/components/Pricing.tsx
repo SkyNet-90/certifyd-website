@@ -30,50 +30,97 @@ const Pricing: React.FC = () => {
             Simple, <span className="gradient-text">Transparent Pricing</span>
           </h2>
           <p className="text-lg md:text-xl text-secondary-600 max-w-3xl mx-auto leading-relaxed">
-            CertifydPro is free to download and use, with optional in-app purchases for premium features.
+            Start free with up to 3 certifications, then upgrade for unlimited features and professional tools.
           </p>
         </motion.div>
 
-        <div className="max-w-2xl mx-auto">
-          {/* Free Plan */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="card p-8 relative"
-          >
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold text-secondary-900 mb-2">Free Version</h3>
-              <div className="text-5xl font-bold gradient-text mb-2">Free</div>
-              <p className="text-secondary-600">Core features always free</p>
-            </div>
-
-            <ul className="space-y-4 mb-8">
-              {[
-                'Unlimited certifications',
-                'Smart notifications & reminders',
-                'Document attachments',
-                'PDF portfolio export',
-                'Calendar integration',
-                'Local data storage',
-                'AES-256 encryption',
-                'iOS & Android apps',
-                'Premium features via in-app purchase'
-              ].map((feature, index) => (
-                <li key={index} className="flex items-center">
-                  <Check className="w-5 h-5 text-primary-600 mr-3 flex-shrink-0" />
-                  <span className="text-secondary-700">{feature}</span>
-                </li>
-              ))}
-            </ul>
-
-            <button
-              onClick={scrollToDownload}
-              className="btn-primary w-full text-lg"
+        <div className="max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Free Plan */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="card p-8 relative bg-gradient-to-br from-green-50 to-emerald-50 border-green-200"
             >
-              Download Now
-            </button>
-          </motion.div>
+              <div className="text-center mb-8">
+                <div className="inline-block px-3 py-1 bg-green-600 text-white text-sm font-semibold rounded-full mb-3">
+                  Always Free
+                </div>
+                <h3 className="text-2xl font-bold text-secondary-900 mb-2">Core Features</h3>
+                <div className="text-5xl font-bold text-green-600 mb-2">$0</div>
+                <p className="text-secondary-600">Forever free, no hidden costs</p>
+              </div>
+
+              <ul className="space-y-4 mb-8">
+                {[
+                  'Up to 3 certifications',
+                  'Basic 30-day notifications',
+                  'PDF export (with watermark)',
+                  'Biometric authentication',
+                  'AES-256 encryption',
+                  'Core security features',
+                  'Basic data management'
+                ].map((feature, index) => (
+                  <li key={index} className="flex items-center">
+                    <Check className="w-5 h-5 text-green-600 mr-3 flex-shrink-0" />
+                    <span className="text-secondary-700">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <button
+                onClick={scrollToDownload}
+                className="btn-secondary w-full text-lg border-green-600 text-green-700 hover:bg-green-600 hover:text-white"
+              >
+                Download Free
+              </button>
+            </motion.div>
+
+            {/* Premium Plan */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="card p-8 relative bg-gradient-to-br from-primary-50 to-primary-100 border-primary-200"
+            >
+              <div className="text-center mb-8">
+                <div className="inline-block px-3 py-1 bg-primary-600 text-white text-sm font-semibold rounded-full mb-3">
+                  Premium Features
+                </div>
+                <h3 className="text-2xl font-bold text-secondary-900 mb-2">Premium Subscription</h3>
+                <div className="text-5xl font-bold gradient-text mb-2">$2.49</div>
+                <p className="text-secondary-600">per month or $24.99/year</p>
+              </div>
+
+              <ul className="space-y-4 mb-8">
+                {[
+                  'Unlimited certifications',
+                  'Advanced notifications (1,7,14,30 days)',
+                  'Calendar integration',
+                  'Professional PDFs (no watermark)',
+                  'Advanced analytics & reports',
+                  'Automated portfolio reports',
+                  'Bulk data import',
+                  'Achievement system',
+                  'Custom branding',
+                  'Priority support'
+                ].map((feature, index) => (
+                  <li key={index} className="flex items-center">
+                    <Check className="w-5 h-5 text-primary-600 mr-3 flex-shrink-0" />
+                    <span className="text-secondary-700">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <button
+                onClick={scrollToDownload}
+                className="btn-primary w-full text-lg"
+              >
+                Get Premium
+              </button>
+            </motion.div>
+          </div>
         </div>
 
         {/* FAQ Section */}

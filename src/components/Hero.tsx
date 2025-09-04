@@ -36,7 +36,7 @@ const Hero: React.FC = () => {
             className="inline-flex items-center px-4 py-2 bg-primary-100 text-primary-700 rounded-full text-sm font-medium mb-6 backdrop-blur-sm relative z-10"
           >
             <Star className="w-4 h-4 mr-2 text-primary-600" />
-            Offline-First Certification Tracker
+            Professional IT Certification Management
           </motion.div>
 
           {/* Main Headline */}
@@ -58,10 +58,10 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-lg md:text-xl lg:text-2xl text-secondary-600 mb-8 max-w-3xl mx-auto leading-relaxed"
+            className="text-lg md:text-xl lg:text-2xl text-secondary-700 mb-8 max-w-3xl mx-auto leading-relaxed font-medium"
           >
-            Never miss another expiration date with CertifydPro - the secure, offline-first certification tracker 
-            for IT professionals. No account required, your data stays on your device.
+            Enterprise-grade security meets professional certification management. 
+            Biometric authentication, encrypted storage, and smart renewal tracking.
           </motion.p>
 
           {/* Stats */}
@@ -69,19 +69,19 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-wrap justify-center items-center gap-8 mb-10 text-secondary-600"
+            className="flex flex-wrap justify-center items-center gap-8 mb-10 text-secondary-700"
           >
-            <div className="flex items-center">
+            <div className="flex items-center bg-white/80 px-4 py-2 rounded-full shadow-sm">
               <Shield className="w-5 h-5 mr-2 text-primary-600" />
-              <span className="font-medium">Privacy-First</span>
+              <span className="font-semibold">Biometric Security</span>
             </div>
-            <div className="flex items-center">
+            <div className="flex items-center bg-white/80 px-4 py-2 rounded-full shadow-sm">
               <Smartphone className="w-5 h-5 mr-2 text-primary-600" />
-              <span className="font-medium">iOS Available</span>
+              <span className="font-semibold">iOS & Android</span>
             </div>
-            <div className="flex items-center">
+            <div className="flex items-center bg-white/80 px-4 py-2 rounded-full shadow-sm">
               <Star className="w-5 h-5 mr-2 text-primary-600" />
-              <span className="font-medium">No Account Required</span>
+              <span className="font-semibold">Freemium Model</span>
             </div>
           </motion.div>
 
@@ -95,12 +95,14 @@ const Hero: React.FC = () => {
             <button
               onClick={scrollToDownload}
               className="btn-primary text-lg px-8 py-4 w-full sm:w-auto"
+              aria-label="Download CertifydPro app"
             >
               Download App
             </button>
             <button
               onClick={scrollToFeatures}
               className="btn-secondary text-lg px-8 py-4 w-full sm:w-auto"
+              aria-label="View app features"
             >
               See Features
             </button>

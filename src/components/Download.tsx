@@ -10,11 +10,11 @@ const Download: React.FC = () => {
   });
 
   return (
-    <section id="download" className="section-padding bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 text-white relative overflow-hidden">
+    <section id="download" className="section-padding bg-secondary-900 text-white relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-20 left-20 w-72 h-72 bg-white/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-white/5 rounded-full blur-3xl" />
+        <div className="absolute top-20 left-20 w-72 h-72 bg-primary-500/20 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-20 w-96 h-96 bg-primary-400/10 rounded-full blur-3xl" />
       </div>
 
       <div className="container-custom relative z-10">
@@ -25,12 +25,12 @@ const Download: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-            Download for iOS & Android
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-white">
+            Download CertifydPro Today
           </h2>
-          <p className="text-lg md:text-xl text-primary-100 max-w-3xl mx-auto leading-relaxed">
-            Get started with offline certification tracking in seconds. 
-            Available for iOS 13.0+ and Android 5.0+ with no sign up required.
+          <p className="text-lg md:text-xl text-secondary-200 max-w-3xl mx-auto leading-relaxed font-medium">
+            Start organizing your certifications in minutes. Free download, no account required, 
+            and your data stays completely private on your device.
           </p>
         </motion.div>
 

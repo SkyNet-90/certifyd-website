@@ -8,7 +8,9 @@ import {
   Lock, 
   Award, 
   Database,
-  Calendar
+  Calendar,
+  BarChart3,
+  Fingerprint
 } from 'lucide-react';
 
 interface FeatureCardProps {
@@ -53,39 +55,44 @@ const Features: React.FC = () => {
 
   const features = [
     {
-      icon: <Award className="w-8 h-8 text-white" />,
-      title: "Smart Dashboard",
-      description: "Visual status overview of all certifications with expiring, active, and expired tracking in an intuitive interface."
+      icon: <Fingerprint className="w-8 h-8 text-white" />,
+      title: "Biometric Security",
+      description: "FaceID, TouchID, and fingerprint authentication with PIN backup and secure account recovery options."
     },
     {
       icon: <Bell className="w-8 h-8 text-white" />,
-      title: "Expiration Alerts",
-      description: "Intelligent notifications 60 days before expiration with customizable reminder schedules to never miss renewals."
+      title: "Smart Notifications",
+      description: "Advanced alerts with 1, 7, 14, and 30-day reminders, plus snooze functionality and priority levels."
     },
     {
       icon: <Database className="w-8 h-8 text-white" />,
-      title: "Multiple Provider Support",
-      description: "Track certifications from AWS, Microsoft, Google Cloud, Cisco, CompTIA, and 20+ other providers in one place."
+      title: "50+ Providers",
+      description: "Track certifications from AWS, Microsoft, Cisco, CompTIA, Google Cloud, and 50+ other providers."
     },
     {
       icon: <FileText className="w-8 h-8 text-white" />,
-      title: "Portfolio Generator",
-      description: "Create professional certification portfolios and summaries perfect for job applications and client presentations."
+      title: "Professional PDFs",
+      description: "Generate job-ready certification portfolios with custom branding and watermark-free exports."
     },
     {
-      icon: <Database className="w-8 h-8 text-white" />,
-      title: "Import/Export Data",
-      description: "Tech-friendly JSON format for data portability, scripting, and automation. Full control over your certification data."
+      icon: <BarChart3 className="w-8 h-8 text-white" />,
+      title: "Advanced Analytics",
+      description: "Portfolio insights, certification heatmaps, trends analysis, and automated weekly/monthly reports."
     },
     {
       icon: <Calendar className="w-8 h-8 text-white" />,
-      title: "Calendar Integration", 
-      description: "Sync certification expiration dates with your device calendar and get native reminders across all your devices."
+      title: "Calendar Sync", 
+      description: "Sync expiration dates with your device calendar and get native reminders across all devices."
+    },
+    {
+      icon: <Award className="w-8 h-8 text-white" />,
+      title: "Achievement System",
+      description: "Milestone tracking with badges, streak counters, and celebration notifications for portfolio growth."
     },
     {
       icon: <Lock className="w-8 h-8 text-white" />,
-      title: "Offline-First Privacy",
-      description: "All certification data stored locally on your device with no cloud dependency or data transmission."
+      title: "Enterprise Security",
+      description: "AES-256 encryption, secure keystore integration, and auto-lock protection with configurable timeouts."
     }
   ];
 

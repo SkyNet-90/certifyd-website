@@ -12,33 +12,33 @@ const Security: React.FC = () => {
   const securityFeatures = [
     {
       icon: Lock,
-      title: 'Local Data Storage',
-      description: 'Your certification data is stored locally on your device, giving you complete control and eliminating cloud-based security risks.',
+      title: 'Biometric Authentication',
+      description: 'FaceID, TouchID, and device fingerprint authentication with secure PIN backup and multi-factor recovery options.',
     },
     {
       icon: Eye,
-      title: 'Privacy by Design',
-      description: 'We collect minimal data and never share your personal information with third parties. Your certifications stay private.',
+      title: 'AES-256 Encryption',
+      description: 'Military-grade encryption protects all certification data with secure key management and storage.',
     },
     {
       icon: Server,
-      title: 'No Cloud Dependencies',
-      description: 'CertifydPro works entirely offline. No data transmission, no server vulnerabilities, no external access to your information.',
+      title: 'Secure Storage',
+      description: 'iOS Keychain and Android Keystore integration ensures your data is protected by device-level security.',
     },
     {
       icon: FileCheck,
-      title: 'Data Integrity',
-      description: 'Built-in validation ensures your certification data remains accurate and uncorrupted over time.',
+      title: 'Auto-Lock Protection',
+      description: 'Configurable timeout settings automatically lock the app to prevent unauthorized access.',
     },
     {
       icon: Key,
-      title: 'Device-Level Protection',
-      description: 'Leverages your device\'s built-in security features and operating system protections for maximum safety.',
+      title: 'Account Recovery',
+      description: 'Multiple secure recovery methods with attempt limiting to protect against unauthorized access.',
     },
     {
       icon: Shield,
-      title: 'Secure by Default',
-      description: 'Every feature is designed with security first. No complex settings needed - protection is built into the core architecture.',
+      title: 'Privacy by Design',
+      description: 'Local-only storage means your certification data never leaves your device or gets transmitted anywhere.',
     },
   ];
 
@@ -56,8 +56,8 @@ const Security: React.FC = () => {
             Security & <span className="gradient-text">Privacy</span>
           </h2>
           <p className="text-lg md:text-xl text-secondary-600 max-w-3xl mx-auto leading-relaxed">
-            Your certification data deserves the highest level of protection. CertifydPro is built 
-            with security and privacy as core principles, not afterthoughts.
+            Enterprise-grade security meets professional certification management. Your data is protected 
+            with biometric authentication, military-grade encryption, and secure storage.
           </p>
         </motion.div>
 

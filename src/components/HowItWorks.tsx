@@ -18,14 +18,14 @@ const HowItWorks: React.FC = () => {
     },
     {
       number: "02",
-      title: "Set Up Your Profile",
-      description: "Create your secure profile. Add your professional contact information.",
+      title: "Secure Authentication",
+      description: "Set up biometric authentication (FaceID/TouchID) with PIN backup for secure access to your certifications.",
       icon: <Smartphone className="w-8 h-8 text-white" />
     },
     {
       number: "03",
       title: "Add Certifications",
-      description: "Add your existing certifications or create new ones. Set renewal dates and manage your certification portfolio.",
+      description: "Add certifications from 50+ providers including AWS, Microsoft, Cisco, and CompTIA with smart renewal tracking.",
       icon: <Check className="w-8 h-8 text-white" />
     }
   ];
