@@ -89,7 +89,7 @@ const Pricing: React.FC = () => {
                   Premium Features
                 </div>
                 <h3 className="text-2xl font-bold text-secondary-900 mb-2">Premium Subscription</h3>
-                <div className="text-5xl font-bold gradient-text mb-2">$2.49</div>
+                <div className="text-5xl font-bold gradient-text mb-2">$2.99</div>
                 <p className="text-secondary-600">per month or $24.99/year</p>
               </div>
 
