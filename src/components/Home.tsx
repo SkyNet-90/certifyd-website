@@ -10,8 +10,6 @@ import StrongCTA from './StrongCTA';
 import Download from './Download';
 import About from './About';
 import Security from './Security';
-import DataDeletion from './DataDeletion';
-import Changelog from './Changelog';
 import SocialShare from './SocialShare';
 import Support from './Support';
 
@@ -29,8 +27,6 @@ const Home: React.FC = () => {
       <Download />
       <About />
       <Security />
-      <DataDeletion />
-      <Changelog />
       <SocialShare />
       <Support />
     </>

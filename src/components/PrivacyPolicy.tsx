@@ -11,8 +11,8 @@ const PrivacyPolicy: React.FC = () => {
           
           <div className="text-white/90 space-y-8">
             <div className="mb-6">
-              <p className="text-lg opacity-80 mb-2">Effective Date: August 18, 2025</p>
-              <p className="text-lg opacity-80">Last Updated: August 18, 2025</p>
+              <p className="text-lg opacity-80 mb-2">Effective Date: October 20, 2025</p>
+              <p className="text-lg opacity-80">Last Updated: October 20, 2025</p>
             </div>
 
             <section>
@@ -58,9 +58,6 @@ const PrivacyPolicy: React.FC = () => {
                   <strong>Service Provision:</strong> To create, manage, and verify your digital certifications
                 </p>
                 <p className="leading-relaxed">
-                  // removed account management section
-                </p>
-                <p className="leading-relaxed">
                   <strong>Communication:</strong> To send important updates, security alerts, and promotional content
                 </p>
                 <p className="leading-relaxed">
@@ -98,6 +95,25 @@ const PrivacyPolicy: React.FC = () => {
                   <strong>Business Transfers:</strong> In the event of a merger, acquisition, or sale of company assets
                 </p>
               </div>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-semibold mb-4 text-white">4a. RevenueCat and Payment Processing</h2>
+              <p className="leading-relaxed mb-4">
+                In-app subscriptions and purchases are processed through RevenueCat, a third-party payment service provider. To facilitate subscription management and in-app purchases, certain information is shared with RevenueCat, including:
+              </p>
+              <div className="space-y-2 mb-4">
+                <p className="leading-relaxed">• Device identifiers and app installation ID</p>
+                <p className="leading-relaxed">• Subscription status and purchase history</p>
+                <p className="leading-relaxed">• Transaction details and pricing information</p>
+                <p className="leading-relaxed">• Customer support contact information (if you contact support)</p>
+              </div>
+              <p className="leading-relaxed mb-4">
+                RevenueCat uses this information solely to process your subscriptions, manage billing, and prevent fraud. RevenueCat complies with industry-standard data protection practices. For more information about how RevenueCat handles your data, please visit their <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-300 hover:text-blue-200 underline">Privacy Policy</a>.
+              </p>
+              <p className="leading-relaxed">
+                Please note that you are also subject to RevenueCat's terms of service when making in-app purchases. The actual payment processing is handled by the app store (Apple App Store or Google Play Store), which may collect additional information according to their respective privacy policies.
+              </p>
             </section>
 
             <section>
@@ -201,9 +217,6 @@ const PrivacyPolicy: React.FC = () => {
                 </p>
                 <p className="leading-relaxed">
                   • Website: https://certifyd.app/privacy
-                </p>
-                <p className="leading-relaxed">
-                  // removed in-app account privacy settings
                 </p>
               </div>
             </section>

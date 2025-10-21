@@ -79,11 +79,6 @@ const Footer: React.FC = () => {
                   Download
                 </button>
               </li>
-              <li>
-                <a href="#changelog" className="text-secondary-400 hover:text-primary-400 transition-colors duration-200">
-                  What's New
-                </a>
-              </li>
             </ul>
           </div>
 

@@ -11,8 +11,8 @@ const TermsOfService: React.FC = () => {
           
           <div className="text-white/90 space-y-8">
             <div className="mb-6">
-              <p className="text-lg opacity-80 mb-2">Effective Date: August 18, 2025</p>
-              <p className="text-lg opacity-80">Last Updated: August 18, 2025</p>
+              <p className="text-lg opacity-80 mb-2">Effective Date: October 20, 2025</p>
+              <p className="text-lg opacity-80">Last Updated: October 20, 2025</p>
             </div>
 
             <section>
@@ -36,13 +36,7 @@ const TermsOfService: React.FC = () => {
                   • No account or registration is required to use CertifydPro. All features are available without sign up.
                 </p>
                 <p className="leading-relaxed">
-                  // removed account credential responsibility
-                </p>
-                <p className="leading-relaxed">
                   • You must be at least 16 years old to use this service
-                </p>
-                <p className="leading-relaxed">
-                  // removed multiple account restriction
                 </p>
               </div>
             </section>
@@ -93,13 +87,19 @@ const TermsOfService: React.FC = () => {
                   • Premium subscriptions are billed monthly or annually
                 </p>
                 <p className="leading-relaxed">
-                  • Payments are processed through secure third-party providers
+                  • Payments are processed through RevenueCat, a third-party payment service provider
                 </p>
                 <p className="leading-relaxed">
-                  • You may cancel your subscription at any time
+                  • By purchasing a subscription, you agree to RevenueCat's terms and conditions. RevenueCat's privacy policy is available at <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-300 hover:text-blue-200 underline">https://www.revenuecat.com/privacy</a>
                 </p>
                 <p className="leading-relaxed">
-                  • Refunds are handled according to app store policies
+                  • The actual payment transaction is processed by the app store (Apple App Store or Google Play Store), and you are also subject to their respective terms and conditions
+                </p>
+                <p className="leading-relaxed">
+                  • You may cancel your subscription at any time through your app store account settings
+                </p>
+                <p className="leading-relaxed">
+                  • Refunds are handled according to app store policies (Apple or Google). Please contact the respective app store for refund requests
                 </p>
               </div>
             </section>
