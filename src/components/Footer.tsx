@@ -1,13 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Shield, Mail, Linkedin } from 'lucide-react';
 
 const Footer: React.FC = () => {
+  const [newsletterStatus, setNewsletterStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setNewsletterStatus('loading');
+
+    try {
+      const response = await fetch('https://formspree.io/f/meorwdqa', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: newsletterEmail }),
+      });
+
+      if (response.ok) {
+        setNewsletterStatus('success');
+        setNewsletterEmail('');
+        setTimeout(() => setNewsletterStatus('idle'), 5000);
+      } else {
+        setNewsletterStatus('error');
+        setTimeout(() => setNewsletterStatus('idle'), 5000);
+      }
+    } catch (error) {
+      setNewsletterStatus('error');
+      setTimeout(() => setNewsletterStatus('idle'), 5000);
     }
   };
 
@@ -89,11 +119,6 @@ const Footer: React.FC = () => {
                 </button>
               </li>
               <li>
-                <Link to="/help" className="text-secondary-400 hover:text-primary-400 transition-colors duration-200">
-                  Help Center
-                </Link>
-              </li>
-              <li>
                 <a href="mailto:support@certifyd.app" className="text-secondary-400 hover:text-primary-400 transition-colors duration-200">
                   Email Support
                 </a>
@@ -120,16 +145,6 @@ const Footer: React.FC = () => {
                   Terms of Service
                 </Link>
               </li>
-              <li>
-                <a href="#deletion" className="text-secondary-400 hover:text-primary-400 transition-colors duration-200">
-                  Data Deletion
-                </a>
-              </li>
-              <li>
-                <a href="#security" className="text-secondary-400 hover:text-primary-400 transition-colors duration-200">
-                  Security
-                </a>
-              </li>
             </ul>
           </div>
         </div>
@@ -148,15 +163,23 @@ const Footer: React.FC = () => {
               <p className="text-secondary-300">Get notified about new features and security updates</p>
             </div>
             <form 
-              onSubmit={(e) => {
-                e.preventDefault();
-                // Handle newsletter signup here
-                alert('Thank you for subscribing!');
-              }}
+              onSubmit={handleNewsletterSubmit}
               className="flex gap-2"
             >
+              {newsletterStatus === 'success' && (
+                <div className="col-span-2 p-3 bg-green-500/20 border border-green-500/50 rounded-lg text-green-300 text-sm font-medium">
+                  ✓ Thanks for subscribing!
+                </div>
+              )}
+              {newsletterStatus === 'error' && (
+                <div className="col-span-2 p-3 bg-red-500/20 border border-red-500/50 rounded-lg text-red-300 text-sm font-medium">
+                  Something went wrong. Please try again.
+                </div>
+              )}
               <input
                 type="email"
+                value={newsletterEmail}
+                onChange={(e) => setNewsletterEmail(e.target.value)}
                 placeholder="your@email.com"
                 aria-label="Email address for newsletter subscription"
                 className="flex-1 px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-primary-400"
@@ -164,10 +187,11 @@ const Footer: React.FC = () => {
               />
               <button
                 type="submit"
+                disabled={newsletterStatus === 'loading'}
                 aria-label="Subscribe to newsletter"
-                className="px-6 py-2 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition-colors duration-200 whitespace-nowrap"
+                className="px-6 py-2 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition-colors duration-200 whitespace-nowrap disabled:opacity-75 disabled:cursor-not-allowed"
               >
-                Subscribe
+                {newsletterStatus === 'loading' ? 'Subscribing...' : 'Subscribe'}
               </button>
             </form>
           </div>

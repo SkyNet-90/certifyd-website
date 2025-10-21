@@ -25,8 +25,14 @@ const TermsOfService: React.FC = () => {
             <section>
               <h2 className="text-2xl font-semibold mb-4 text-white">2. Description of Service</h2>
               <p className="leading-relaxed">
-                CertifydPro is a mobile application that helps users create, manage, and verify professional certifications and credentials. Our service includes digital certificate creation, verification tools, and secure local storage of certification data. No account or registration is required.
+                CertifydPro is a mobile application that helps users create, manage, and organize professional certifications and credentials. All data is stored locally on your device. The service includes:
               </p>
+              <div className="space-y-2 mt-3">
+                <p className="leading-relaxed">• Free tier: Track up to 3 certifications with basic features</p>
+                <p className="leading-relaxed">• Premium tier: Unlimited certifications with advanced features including analytics, calendar integration, and more</p>
+                <p className="leading-relaxed">• Optional professional profile creation for portfolio management</p>
+                <p className="leading-relaxed">• Secure local storage with AES-256 encryption</p>
+              </div>
             </section>
 
             <section>
@@ -65,16 +71,29 @@ const TermsOfService: React.FC = () => {
 
             <section>
               <h2 className="text-2xl font-semibold mb-4 text-white">5. Intellectual Property</h2>
+              <p className="leading-relaxed mb-4">
+                CertifydPro, including its design, features, and underlying technology, is owned by CertifydPro and protected by intellectual property laws.
+              </p>
+              <p className="leading-relaxed mb-4">
+                <strong>Your Data:</strong> You retain full ownership of all data you enter into the app, including your certifications and profile information. This data is stored locally on your device.
+              </p>
               <p className="leading-relaxed">
-                The CertifydPro App, including its design, features, and underlying technology, is owned by CertifydPro and protected by intellectual property laws. You retain ownership of your certification data. All data is stored locally on your device and is not transmitted to external servers.
+                <strong>No Transmission:</strong> Your data is not transmitted to external servers or shared with us unless you explicitly opt-in to services like newsletter subscriptions.
               </p>
             </section>
 
             <section>
               <h2 className="text-2xl font-semibold mb-4 text-white">6. Privacy and Data Protection</h2>
-              <p className="leading-relaxed">
-                Your privacy is important to us. Our collection and use of personal information is governed by our Privacy Policy, which is incorporated into these Terms by reference. We employ industry-standard security measures to protect your certification data.
+              <p className="leading-relaxed mb-4">
+                Your privacy is important to us. Our Privacy Policy governs the collection and use of personal information and is incorporated into these Terms by reference. Please review our Privacy Policy for details on our data practices.
               </p>
+              <div className="space-y-2">
+                <p className="leading-relaxed"><strong>Key Privacy Practices:</strong></p>
+                <p className="leading-relaxed">• All data is stored locally on your device only</p>
+                <p className="leading-relaxed">• We do not transmit or store your certification data on external servers</p>
+                <p className="leading-relaxed">• Your data is encrypted using AES-256 encryption</p>
+                <p className="leading-relaxed">• We do not sell or share your data with third parties (except as described in our Privacy Policy)</p>
+              </div>
             </section>
 
             <section>

@@ -25,46 +25,36 @@ const PrivacyPolicy: React.FC = () => {
             <section>
               <h2 className="text-2xl font-semibold mb-4 text-white">2. Information We Collect</h2>
               
-              <h3 className="text-xl font-semibold mb-3 text-white/95">Personal Information</h3>
+              <h3 className="text-xl font-semibold mb-3 text-white/95">User-Provided Information</h3>
+              <p className="leading-relaxed mb-3">
+                CertifydPro only collects information that you voluntarily provide within the app:
+              </p>
               <div className="space-y-2 mb-4">
-                <p className="leading-relaxed">• Full name and professional title</p>
-                <p className="leading-relaxed">• Email address and phone number</p>
-                <p className="leading-relaxed">• Profile photos and professional headshots</p>
-                <p className="leading-relaxed">• Educational and professional background</p>
-                <p className="leading-relaxed">• Certification and credential information</p>
+                <p className="leading-relaxed">• <strong>Certification Data:</strong> Certification names, providers, issue dates, expiration dates, credential IDs, and notes</p>
+                <p className="leading-relaxed">• <strong>Professional Profile Information (optional):</strong> Full name, professional title, email address, phone number, address, social media profiles, and profile photo</p>
+                <p className="leading-relaxed">• <strong>Resume/Portfolio Information (optional):</strong> Educational background, professional experience, and related documents</p>
               </div>
 
-              <h3 className="text-xl font-semibold mb-3 text-white/95">Technical Information</h3>
-              <div className="space-y-2 mb-4">
-                <p className="leading-relaxed">• Device information and operating system</p>
-                <p className="leading-relaxed">• IP address and location data (when permitted)</p>
-                <p className="leading-relaxed">• App usage analytics and performance data</p>
-                <p className="leading-relaxed">• Crash reports and error logs</p>
-              </div>
-
-              <h3 className="text-xl font-semibold mb-3 text-white/95">Usage Data</h3>
-              <div className="space-y-2">
-                <p className="leading-relaxed">• Features used within the app</p>
-                <p className="leading-relaxed">• Time spent on different sections</p>
-                <p className="leading-relaxed">• Certification creation and verification history</p>
-                <p className="leading-relaxed">• Search queries and interactions</p>
-              </div>
+              <h3 className="text-xl font-semibold mb-3 text-white/95">Important Note on Data Storage</h3>
+              <p className="leading-relaxed">
+                <strong>All data collected is stored locally on your device only.</strong> CertifydPro does not send your certification data, profile information, or any personal details to external servers or cloud storage. Your data remains entirely under your control on your device.
+              </p>
             </section>
 
             <section>
               <h2 className="text-2xl font-semibold mb-4 text-white">3. How We Use Your Information</h2>
               <div className="space-y-3">
                 <p className="leading-relaxed">
-                  <strong>Service Provision:</strong> To create, manage, and verify your digital certifications
+                  <strong>Service Provision:</strong> To display, organize, and manage your certifications and professional profile within the app
                 </p>
                 <p className="leading-relaxed">
-                  <strong>Communication:</strong> To send important updates, security alerts, and promotional content
+                  <strong>Notifications:</strong> To send you local expiration reminders for your certifications (handled entirely on your device)
                 </p>
                 <p className="leading-relaxed">
-                  <strong>Improvement:</strong> To analyze usage patterns and enhance our app features
+                  <strong>Future Communications (Optional):</strong> If you opt-in to a newsletter, we may send you updates about new features and security updates
                 </p>
                 <p className="leading-relaxed">
-                  <strong>Security:</strong> To detect and prevent fraud, abuse, and security breaches
+                  <strong>Security:</strong> To protect against fraud and ensure the app functions properly
                 </p>
                 <p className="leading-relaxed">
                   <strong>Legal Compliance:</strong> To comply with applicable laws and regulations
@@ -75,24 +65,21 @@ const PrivacyPolicy: React.FC = () => {
             <section>
               <h2 className="text-2xl font-semibold mb-4 text-white">4. Information Sharing and Disclosure</h2>
               
-              <h3 className="text-xl font-semibold mb-3 text-white/95">We Do NOT Sell Your Personal Information</h3>
+              <h3 className="text-xl font-semibold mb-3 text-white/95">We Do NOT Share Your Certification Data</h3>
               <p className="leading-relaxed mb-4">
-                Certifyd does not sell, rent, or trade your personal information to third parties for marketing purposes.
+                Your certification and profile information is stored locally on your device only. We do not transmit, share, sell, or store your data on external servers or share it with third parties, unless you explicitly choose to do so.
               </p>
 
-              <h3 className="text-xl font-semibold mb-3 text-white/95">Limited Sharing</h3>
+              <h3 className="text-xl font-semibold mb-3 text-white/95">Limited Exceptions</h3>
               <div className="space-y-3">
                 <p className="leading-relaxed">
-                  <strong>Service Providers:</strong> Trusted partners who assist with app functionality (cloud storage, analytics, payment processing)
+                  <strong>Newsletter Opt-in:</strong> If you choose to subscribe to our newsletter, your email address will be shared with our email service provider (Formspree) solely to send you updates about new features and security notices
                 </p>
                 <p className="leading-relaxed">
-                  <strong>Verification Requests:</strong> When you explicitly choose to share certifications for verification purposes
+                  <strong>Legal Requirements:</strong> If required by law, court order, or government regulation, we may be compelled to disclose information
                 </p>
                 <p className="leading-relaxed">
-                  <strong>Legal Requirements:</strong> When required by law, court order, or government regulation
-                </p>
-                <p className="leading-relaxed">
-                  <strong>Business Transfers:</strong> In the event of a merger, acquisition, or sale of company assets
+                  <strong>Business Transfers:</strong> In the unlikely event of a merger, acquisition, or sale of company assets, your data would transfer as part of that transaction
                 </p>
               </div>
             </section>
@@ -120,19 +107,19 @@ const PrivacyPolicy: React.FC = () => {
               <h2 className="text-2xl font-semibold mb-4 text-white">5. Data Security</h2>
               <div className="space-y-3">
                 <p className="leading-relaxed">
-                  • <strong>Encryption:</strong> All data is encrypted in transit and at rest using industry-standard protocols
+                  • <strong>Local Storage:</strong> All your data is encrypted and stored locally on your device
                 </p>
                 <p className="leading-relaxed">
-                  • <strong>Access Controls:</strong> Strict access controls for our systems
+                  • <strong>Device-Level Security:</strong> Your device's native security features (iOS Keychain, Android Keystore) protect your information
                 </p>
                 <p className="leading-relaxed">
-                  • <strong>Regular Audits:</strong> Regular security assessments and vulnerability testing
+                  • <strong>AES-256 Encryption:</strong> Sensitive data is encrypted using AES-256 encryption standards
                 </p>
                 <p className="leading-relaxed">
-                  • <strong>Data Centers:</strong> Secure, certified data centers with physical and digital protection
+                  • <strong>No External Storage:</strong> Because data is stored locally, there are no external servers that could be compromised
                 </p>
                 <p className="leading-relaxed">
-                  • <strong>Incident Response:</strong> Comprehensive plan for responding to potential security breaches
+                  • <strong>Auto-Lock:</strong> The app supports auto-lock features to prevent unauthorized access if your device is lost or stolen
                 </p>
               </div>
             </section>
@@ -164,56 +151,46 @@ const PrivacyPolicy: React.FC = () => {
             <section>
               <h2 className="text-2xl font-semibold mb-4 text-white">7. Data Retention</h2>
               <p className="leading-relaxed">
-                We retain your personal information only as long as necessary to provide our services and comply with legal obligations. Certification data may be retained for verification purposes. You can request earlier deletion by contacting support.
+                Your certification and profile data is retained on your device as long as you keep it in the app. You can delete any information at any time directly through the app. If you uninstall the app, all data stored locally is removed from your device (unless you have backed it up separately).
               </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4 text-white">8. International Data Transfers</h2>
+              <h2 className="text-2xl font-semibold mb-4 text-white">8. Children's Privacy</h2>
               <p className="leading-relaxed">
-                Your information may be processed and stored in countries other than your own. We ensure appropriate safeguards are in place when transferring data internationally, including using Standard Contractual Clauses and working with certified partners.
+                CertifydPro is not intended for children under 16 years of age. We do not knowingly collect personal information from children under 16. If we become aware that we have collected such information, we will take steps to delete it promptly.
               </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4 text-white">9. Children's Privacy</h2>
+              <h2 className="text-2xl font-semibold mb-4 text-white">9. Cookies and Tracking</h2>
               <p className="leading-relaxed">
-                Certifyd is not intended for children under 16 years of age. We do not knowingly collect personal information from children under 16. If we become aware that we have collected such information, we will take steps to delete it promptly.
+                Since CertifydPro stores all data locally on your device and does not use external servers, we do not use cookies or tracking technologies for analytics or user profiling. The app may use minimal local storage for app preferences and settings.
               </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4 text-white">10. Cookies and Tracking</h2>
+              <h2 className="text-2xl font-semibold mb-4 text-white">10. Third-Party Links</h2>
               <p className="leading-relaxed">
-                Our app may use cookies and similar tracking technologies to enhance user experience and analyze app performance. You can control cookie preferences through your device settings. We do not use cookies for cross-site tracking or advertising purposes.
+                Our app does not contain external links to third-party websites or services. This privacy policy does not cover third-party services. If you use links provided in your profile or elsewhere, you are subject to their privacy practices.
               </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4 text-white">11. Third-Party Links</h2>
+              <h2 className="text-2xl font-semibold mb-4 text-white">11. Changes to This Privacy Policy</h2>
               <p className="leading-relaxed">
-                Our app may contain links to third-party websites or services. We are not responsible for the privacy practices of these external sites. We encourage you to review the privacy policies of any third-party services you visit.
+                We may update this Privacy Policy periodically to reflect changes in our practices or applicable laws. We will notify you of material changes through the app. The "Last Updated" date at the top indicates when the policy was most recently revised.
               </p>
             </section>
 
             <section>
-              <h2 className="text-2xl font-semibold mb-4 text-white">12. Changes to This Privacy Policy</h2>
-              <p className="leading-relaxed">
-                We may update this Privacy Policy periodically to reflect changes in our practices or applicable laws. We will notify you of material changes through the app or via email. The "Last Updated" date at the top indicates when the policy was most recently revised.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="text-2xl font-semibold mb-4 text-white">13. Contact Us</h2>
+              <h2 className="text-2xl font-semibold mb-4 text-white">12. Contact Us</h2>
               <div className="space-y-2">
                 <p className="leading-relaxed">
                   For questions about this Privacy Policy or our privacy practices:
                 </p>
                 <p className="leading-relaxed">
-                  • Email: privacy@certifyd.app
-                </p>
-                <p className="leading-relaxed">
-                  • Data Protection Officer: dpo@certifyd.app
+                  • Email: support@certifyd.app
                 </p>
                 <p className="leading-relaxed">
                   • Website: https://certifyd.app/privacy

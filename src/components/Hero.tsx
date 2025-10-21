@@ -155,14 +155,11 @@ const Hero: React.FC = () => {
             <div className="relative">
               <div className="w-64 h-96 mx-auto bg-gradient-to-br from-secondary-800 to-secondary-900 rounded-[2.5rem] p-2 shadow-2xl">
                 <div className="w-full h-full bg-secondary-50 rounded-[2rem] overflow-hidden relative">
-                  {/* App Icon Placeholder */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-20 h-20 bg-gradient-to-br from-primary-500 to-primary-700 rounded-2xl flex items-center justify-center shadow-glow-lg">
-                      <Shield className="w-10 h-10 text-white" />
-                    </div>
-                  </div>
-                  {/* Screen Glow */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary-100/20 to-transparent" />
+                  <img 
+                    src="/screenshots/Welcome Screen.PNG"
+                    alt="CertifydPro Welcome Screen"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
               {/* Phone Glow Effect */}

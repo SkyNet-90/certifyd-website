@@ -1,13 +1,61 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Mail, MessageCircle, FileText, Shield, HelpCircle } from 'lucide-react';
+import { Mail, MessageCircle, FileText, Shield, HelpCircle, CheckCircle } from 'lucide-react';
 
 const Support: React.FC = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
+
+  const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: 'General Question',
+    message: ''
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormStatus('loading');
+
+    try {
+      const response = await fetch('https://formspree.io/f/xnngyrar', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setFormStatus('success');
+        setFormData({
+          name: '',
+          email: '',
+          subject: 'General Question',
+          message: ''
+        });
+        setTimeout(() => setFormStatus('idle'), 5000);
+      } else {
+        setFormStatus('error');
+        setTimeout(() => setFormStatus('idle'), 5000);
+      }
+    } catch (error) {
+      setFormStatus('error');
+      setTimeout(() => setFormStatus('idle'), 5000);
+    }
+  };
 
   return (
     <section id="support" className="section-padding bg-white">
@@ -103,13 +151,38 @@ const Support: React.FC = () => {
           >
             <h3 className="text-2xl font-bold text-secondary-900 mb-6">Send us a Message</h3>
             
-            <form className="space-y-6">
+            {formStatus === 'success' && (
+              <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg flex items-start space-x-3">
+                <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-green-900">Message sent!</h4>
+                  <p className="text-sm text-green-700">Thank you for reaching out. We'll get back to you soon.</p>
+                </div>
+              </div>
+            )}
+
+            {formStatus === 'error' && (
+              <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+                <h4 className="font-semibold text-red-900">Something went wrong</h4>
+                <p className="text-sm text-red-700">Please try again or email us directly at support@certifyd.app</p>
+              </div>
+            )}
+            
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label className="block text-sm font-medium text-secondary-700 mb-2">
                   Name
                 </label>
                 <input
                   type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
                   className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors duration-200"
                   placeholder="Your name"
                 />
@@ -121,6 +194,10 @@ const Support: React.FC = () => {
                 </label>
                 <input
                   type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
                   className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors duration-200"
                   placeholder="your.email@example.com"
                 />
@@ -130,7 +207,12 @@ const Support: React.FC = () => {
                 <label className="block text-sm font-medium text-secondary-700 mb-2">
                   Subject
                 </label>
-                <select className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors duration-200">
+                <select 
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors duration-200"
+                >
                   <option>General Question</option>
                   <option>Technical Support</option>
                   <option>Feature Request</option>
@@ -144,7 +226,11 @@ const Support: React.FC = () => {
                   Message
                 </label>
                 <textarea
+                  name="message"
                   rows={4}
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
                   className="w-full px-4 py-3 border border-secondary-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors duration-200 resize-none"
                   placeholder="Tell us how we can help you..."
                 />
@@ -152,9 +238,10 @@ const Support: React.FC = () => {
               
               <button
                 type="submit"
-                className="btn-primary w-full"
+                disabled={formStatus === 'loading'}
+                className="btn-primary w-full disabled:opacity-75 disabled:cursor-not-allowed"
               >
-                Send Message
+                {formStatus === 'loading' ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           </motion.div>

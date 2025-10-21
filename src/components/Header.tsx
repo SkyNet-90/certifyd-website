@@ -22,7 +22,6 @@ const Header: React.FC = () => {
     { label: 'Pricing', href: '#pricing' },
     { label: 'About', href: '#about' },
     { label: 'Support', href: '#support' },
-    { label: 'Help & Support', href: '/help' },
   ];
 
   const scrollToSection = (href: string) => {
