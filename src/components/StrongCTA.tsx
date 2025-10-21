@@ -90,6 +90,7 @@ const StrongCTA: React.FC = () => {
           >
             <button
               onClick={scrollToDownload}
+              aria-label="Start with free CertifydPro tier"
               className="bg-white text-primary-700 px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white/95 transition-all duration-200 shadow-lg hover:shadow-xl flex items-center group w-full sm:w-auto"
             >
               <Download className="w-5 h-5 mr-2 group-hover:translate-y-0.5 transition-transform" />
@@ -103,6 +104,7 @@ const StrongCTA: React.FC = () => {
                   element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
               }}
+              aria-label="View all CertifydPro features"
               className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white hover:text-primary-700 transition-all duration-200 w-full sm:w-auto"
             >
               See All Features

@@ -22,7 +22,7 @@ const Header: React.FC = () => {
     { label: 'Pricing', href: '#pricing' },
     { label: 'About', href: '#about' },
     { label: 'Support', href: '#support' },
-    { label: 'Help & Support', href: '/help', external: true },
+    { label: 'Help & Support', href: '/help' },
   ];
 
   const scrollToSection = (href: string) => {
@@ -62,20 +62,23 @@ const Header: React.FC = () => {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
             {navItems.map((item, index) => (
-              item.external ? (
-                <motion.a
-                  key={item.label}
-                  href={item.href}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 * index }}
-                  whileHover={{ y: -2 }}
-                  className="text-secondary-700 hover:text-primary-600 font-medium transition-colors duration-200 relative group"
-                  style={{ cursor: 'pointer' }}
-                >
-                  {item.label}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 transition-all duration-200 group-hover:w-full" />
-                </motion.a>
+              item.href.startsWith('/') ? (
+                <motion.div key={item.label}>
+                  <Link
+                    to={item.href}
+                    className="text-secondary-700 hover:text-primary-600 font-medium transition-colors duration-200 relative group inline-block"
+                  >
+                    <motion.div
+                      initial={{ opacity: 0, y: -20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.1 * index }}
+                      whileHover={{ y: -2 }}
+                    >
+                      {item.label}
+                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 transition-all duration-200 group-hover:w-full" />
+                    </motion.div>
+                  </Link>
+                </motion.div>
               ) : (
                 <motion.button
                   key={item.label}
@@ -131,19 +134,42 @@ const Header: React.FC = () => {
         >
           <div className="py-4 space-y-2 glass-effect mt-2 rounded-lg">
             {navItems.map((item, index) => (
-              <motion.button
-                key={item.label}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ 
-                  opacity: isMenuOpen ? 1 : 0, 
-                  x: isMenuOpen ? 0 : -20 
-                }}
-                transition={{ delay: 0.1 * index }}
-                onClick={() => scrollToSection(item.href)}
-                className="block w-full text-left px-4 py-2 text-secondary-700 hover:text-primary-600 hover:bg-primary-50 transition-colors duration-200 font-medium"
-              >
-                {item.label}
-              </motion.button>
+              item.href.startsWith('/') ? (
+                <motion.div
+                  key={item.label}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ 
+                    opacity: isMenuOpen ? 1 : 0, 
+                    x: isMenuOpen ? 0 : -20 
+                  }}
+                  transition={{ delay: 0.1 * index }}
+                >
+                  <Link
+                    to={item.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    className="block w-full text-left px-4 py-2 text-secondary-700 hover:text-primary-600 hover:bg-primary-50 transition-colors duration-200 font-medium"
+                  >
+                    {item.label}
+                  </Link>
+                </motion.div>
+              ) : (
+                <motion.button
+                  key={item.label}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ 
+                    opacity: isMenuOpen ? 1 : 0, 
+                    x: isMenuOpen ? 0 : -20 
+                  }}
+                  transition={{ delay: 0.1 * index }}
+                  onClick={() => {
+                    scrollToSection(item.href);
+                    setIsMenuOpen(false);
+                  }}
+                  className="block w-full text-left px-4 py-2 text-secondary-700 hover:text-primary-600 hover:bg-primary-50 transition-colors duration-200 font-medium"
+                >
+                  {item.label}
+                </motion.button>
+              )
             ))}
             <motion.div
               initial={{ opacity: 0 }}

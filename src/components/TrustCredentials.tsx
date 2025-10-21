@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Award, Shield, Users, Clock } from 'lucide-react';
+import { Award, Shield, Users, Clock, Lock, Key, Database } from 'lucide-react';
 
 const TrustCredentials: React.FC = () => {
   const [ref, inView] = useInView({
@@ -131,19 +131,19 @@ const TrustCredentials: React.FC = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
             <div className="bg-white p-4 rounded-lg shadow-sm">
-              <div className="text-2xl mb-2">�</div>
+              <Shield className="w-8 h-8 text-primary-600 mx-auto mb-2" />
               <h4 className="font-semibold text-secondary-900 text-sm">Device Security</h4>
             </div>
             <div className="bg-white p-4 rounded-lg shadow-sm">
-              <div className="text-2xl mb-2">�</div>
+              <Lock className="w-8 h-8 text-primary-600 mx-auto mb-2" />
               <h4 className="font-semibold text-secondary-900 text-sm">AES-256 Encryption</h4>
             </div>
             <div className="bg-white p-4 rounded-lg shadow-sm">
-              <div className="text-2xl mb-2">�</div>
+              <Key className="w-8 h-8 text-primary-600 mx-auto mb-2" />
               <h4 className="font-semibold text-secondary-900 text-sm">Secure Keystore</h4>
             </div>
             <div className="bg-white p-4 rounded-lg shadow-sm">
-              <div className="text-2xl mb-2">⏰</div>
+              <Clock className="w-8 h-8 text-primary-600 mx-auto mb-2" />
               <h4 className="font-semibold text-secondary-900 text-sm">Auto-Lock</h4>
             </div>
           </div>

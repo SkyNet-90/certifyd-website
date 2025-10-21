@@ -56,11 +56,12 @@ const Pricing: React.FC = () => {
                 {[
                   'Up to 3 certifications',
                   'Basic 30-day notifications',
+                  'Notification inbox with snooze',
                   'PDF export (with watermark)',
                   'Device security',
                   'AES-256 encryption',
-                  'Core security features',
-                  'Basic data management'
+                  'Passcode authentication',
+                  'Data export to JSON'
                 ].map((feature, index) => (
                   <li key={index} className="flex items-center">
                     <Check className="w-5 h-5 text-green-600 mr-3 flex-shrink-0" />
@@ -96,15 +97,17 @@ const Pricing: React.FC = () => {
               <ul className="space-y-4 mb-8">
                 {[
                   'Unlimited certifications',
-                  'Advanced notifications (1,7,14,30 days)',
+                  'Advanced notifications (1, 7, 14, 30 days)',
+                  'Notification inbox with snooze',
                   'Calendar integration',
                   'Professional PDFs (no watermark)',
                   'Advanced analytics & reports',
-                  'Automated portfolio reports',
+                  'Certification heatmap',
+                  'Streak tracking',
+                  'Smart insights & recommendations',
                   'Bulk data import',
                   'Achievement system',
-                  'Custom branding',
-                  'Priority support'
+                  'Data export to JSON'
                 ].map((feature, index) => (
                   <li key={index} className="flex items-center">
                     <Check className="w-5 h-5 text-primary-600 mr-3 flex-shrink-0" />

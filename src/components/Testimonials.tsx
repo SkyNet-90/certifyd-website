@@ -110,7 +110,7 @@ const Testimonials: React.FC = () => {
           ))}
         </div>
 
-        {/* Development Status */}
+        {/* Key Stats */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -118,39 +118,46 @@ const Testimonials: React.FC = () => {
           className="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-8 text-center"
         >
           <div>
-            <div className="text-3xl lg:text-4xl font-bold gradient-text mb-2">Beta</div>
-            <div className="text-secondary-600">Development Stage</div>
-          </div>
-          <div>
-            <div className="text-3xl lg:text-4xl font-bold gradient-text mb-2">iOS</div>
-            <div className="text-secondary-600">First Platform</div>
-          </div>
-          <div>
             <div className="text-3xl lg:text-4xl font-bold gradient-text mb-2">50+</div>
-            <div className="text-secondary-600">Supported Providers</div>
+            <div className="text-secondary-600">Certification Providers</div>
+          </div>
+          <div>
+            <div className="text-3xl lg:text-4xl font-bold gradient-text mb-2">iOS & Android</div>
+            <div className="text-secondary-600">Full Platform Support</div>
           </div>
           <div>
             <div className="text-3xl lg:text-4xl font-bold gradient-text mb-2">100%</div>
             <div className="text-secondary-600">Offline Capable</div>
           </div>
+          <div>
+            <div className="text-3xl lg:text-4xl font-bold gradient-text mb-2">AES-256</div>
+            <div className="text-secondary-600">Military-Grade Security</div>
+          </div>
         </motion.div>
 
-        {/* Beta notice */}
+        {/* CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.8, delay: 0.8 }}
           className="text-center mt-12 p-6 bg-primary-50 rounded-xl border border-primary-200"
         >
-          <p className="text-secondary-700">
-            <strong>Coming Soon:</strong> CertifydPro is currently in beta development. 
-            Be the first to know when it launches!
+          <p className="text-secondary-700 mb-4">
+            Thousands of IT professionals are already using CertifydPro to manage their certifications securely. 
+            Start managing your credentials today with enterprise-grade security.
           </p>
           <a 
-            href="#support" 
-            className="inline-block mt-3 text-primary-600 hover:text-primary-700 font-medium transition-colors duration-200"
+            href="#download" 
+            onClick={(e) => {
+              e.preventDefault();
+              const element = document.querySelector('#download');
+              if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+            }}
+            className="inline-block mt-3 btn-primary"
           >
-            Join the waitlist →
+            Download Now →
           </a>
         </motion.div>
       </div>

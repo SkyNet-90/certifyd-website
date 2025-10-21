@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Shield, Mail, Github, Linkedin, Twitter } from 'lucide-react';
+import { Shield, Mail, Linkedin } from 'lucide-react';
 
 const Footer: React.FC = () => {
   const scrollToSection = (href: string) => {
@@ -36,14 +36,8 @@ const Footer: React.FC = () => {
               Built with privacy and security at its core.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-secondary-400 hover:text-primary-400 transition-colors duration-200">
-                <Twitter className="w-5 h-5" />
-              </a>
               <a href="https://linkedin.com/in/skylarmatthews" className="text-secondary-400 hover:text-primary-400 transition-colors duration-200">
                 <Linkedin className="w-5 h-5" />
-              </a>
-              <a href="https://github.com/SkyNet-90" className="text-secondary-400 hover:text-primary-400 transition-colors duration-200">
-                <Github className="w-5 h-5" />
               </a>
               <a href="mailto:support@certifyd.app" className="text-secondary-400 hover:text-primary-400 transition-colors duration-200">
                 <Mail className="w-5 h-5" />
@@ -95,9 +89,9 @@ const Footer: React.FC = () => {
                 </button>
               </li>
               <li>
-                <a href="#help" className="text-secondary-400 hover:text-primary-400 transition-colors duration-200">
+                <Link to="/help" className="text-secondary-400 hover:text-primary-400 transition-colors duration-200">
                   Help Center
-                </a>
+                </Link>
               </li>
               <li>
                 <a href="mailto:support@certifyd.app" className="text-secondary-400 hover:text-primary-400 transition-colors duration-200">
@@ -139,6 +133,45 @@ const Footer: React.FC = () => {
             </ul>
           </div>
         </div>
+
+        {/* Newsletter Signup */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="my-12 py-8 px-6 bg-gradient-to-r from-primary-600/20 to-primary-700/20 rounded-xl border border-primary-500/30 backdrop-blur-sm"
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div>
+              <h3 className="text-xl font-bold text-white mb-2">Stay Updated</h3>
+              <p className="text-secondary-300">Get notified about new features and security updates</p>
+            </div>
+            <form 
+              onSubmit={(e) => {
+                e.preventDefault();
+                // Handle newsletter signup here
+                alert('Thank you for subscribing!');
+              }}
+              className="flex gap-2"
+            >
+              <input
+                type="email"
+                placeholder="your@email.com"
+                aria-label="Email address for newsletter subscription"
+                className="flex-1 px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-primary-400"
+                required
+              />
+              <button
+                type="submit"
+                aria-label="Subscribe to newsletter"
+                className="px-6 py-2 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition-colors duration-200 whitespace-nowrap"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
+        </motion.div>
 
         {/* Bottom Bar */}
         <div className="border-t border-secondary-700 pt-8">

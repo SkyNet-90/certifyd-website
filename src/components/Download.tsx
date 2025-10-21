@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Download as DownloadIcon, Smartphone, Apple } from 'lucide-react';
+import { Smartphone, Apple } from 'lucide-react';
 
 const Download: React.FC = () => {
   const [ref, inView] = useInView({
@@ -40,6 +40,7 @@ const Download: React.FC = () => {
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             href="#"
+            aria-label="Download CertifydPro from Apple App Store"
             className="inline-block hover:scale-105 transition-transform duration-200"
           >
             <div className="flex items-center bg-black text-white px-6 py-3 rounded-xl hover:bg-secondary-900 transition-colors duration-200">
@@ -56,6 +57,7 @@ const Download: React.FC = () => {
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             href="#"
+            aria-label="Download CertifydPro from Google Play Store"
             className="inline-block hover:scale-105 transition-transform duration-200"
           >
             <div className="flex items-center bg-black text-white px-6 py-3 rounded-xl hover:bg-secondary-900 transition-colors duration-200">
@@ -74,34 +76,6 @@ const Download: React.FC = () => {
             </div>
           </motion.a>
         </div>
-
-        {/* Coming Soon Notice */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="text-center bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20"
-        >
-          <DownloadIcon className="w-16 h-16 mx-auto mb-4 text-primary-200" />
-          <h3 className="text-2xl font-bold mb-4">Coming Soon</h3>
-          <p className="text-primary-100 mb-6 max-w-2xl mx-auto">
-            CertifydPro is currently in development. Join our waitlist to be notified 
-            the moment it's available on the App Store and Google Play.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 items-center justify-center max-w-md mx-auto">
-            <input
-              type="email"
-              placeholder="Enter your email address"
-              className="w-full px-4 py-3 rounded-lg bg-white/20 backdrop-blur-sm border border-white/30 placeholder-white/70 text-white focus:outline-none focus:ring-2 focus:ring-white/50"
-            />
-            <button className="w-full sm:w-auto px-6 py-3 bg-white text-primary-700 font-semibold rounded-lg hover:bg-primary-50 transition-colors duration-200 whitespace-nowrap">
-              Join Waitlist
-            </button>
-          </div>
-          <p className="text-xs text-primary-200 mt-4">
-            No spam. Just updates about the app launch. Unsubscribe anytime.
-          </p>
-        </motion.div>
 
         {/* Device Compatibility */}
         <motion.div

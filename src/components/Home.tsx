@@ -10,7 +10,6 @@ import StrongCTA from './StrongCTA';
 import Download from './Download';
 import About from './About';
 import Security from './Security';
-import SocialShare from './SocialShare';
 import Support from './Support';
 
 const Home: React.FC = () => {
@@ -27,7 +26,6 @@ const Home: React.FC = () => {
       <Download />
       <About />
       <Security />
-      <SocialShare />
       <Support />
     </>
   );
