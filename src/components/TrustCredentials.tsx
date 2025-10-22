@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Award, Shield, Users, Clock, Lock, Key, Database } from 'lucide-react';
+import { Award, Shield, Users, Clock, Lock, Key } from 'lucide-react';
 
 const TrustCredentials: React.FC = () => {
   const [ref, inView] = useInView({

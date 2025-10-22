@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Mail, MessageCircle, FileText, Shield, HelpCircle, CheckCircle } from 'lucide-react';
+import { Mail, MessageCircle, FileText, Shield, HelpCircle } from 'lucide-react';
 
 const Support: React.FC = () => {
   const [ref, inView] = useInView({
