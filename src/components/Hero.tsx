@@ -116,7 +116,7 @@ const Hero: React.FC = () => {
             className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
           >
             <a
-              href="https://apps.apple.com/app/certifydpro/id6736956532"
+              href="https://apps.apple.com/us/app/certifydpro/id6751298103"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block px-6 py-3 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition-colors duration-200 flex items-center gap-2"
@@ -125,17 +125,6 @@ const Hero: React.FC = () => {
                 <path d="M17.05 20.28c-.98.95-2.05.88-3.08.4-1.09-.5-2.08-.48-3.24 0-1.44.62-2.2.44-3.12-.4C2.79 15.25 3.51 7.59 9.05 7.31c1.35.05 2.29.89 3.02.89.9 0 2.3-1.16 3.66-1.04.43.03 2.04.26 3.08 1.82-2.87 1.68-2.37 5.84.38 6.84-.48 1.45-1.12 1.99-2.14 2.86zm-5.47-17.8c-2.26.08-4.1 1.56-4.35 3.42.93.05 2.1-.38 2.96-1.17.93-.88 1.64-2.08 1.51-3.22-.11-.02-.22-.04-.34-.04z"/>
               </svg>
               Download on App Store
-            </a>
-            <a
-              href="https://play.google.com/store/apps/details?id=com.certifydpro"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-6 py-3 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition-colors duration-200 flex items-center gap-2"
-            >
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M3.609 1.814L13.792 12 3.609 22.186A1.5 1.5 0 0 1 1.5 21V3a1.5 1.5 0 0 1 2.109-1.186zM16.5 3v18l6.891-9L16.5 3z"/>
-              </svg>
-              Get it on Google Play
             </a>
           </motion.div>
 
